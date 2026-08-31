@@ -1,0 +1,4 @@
+The most challenging requirement to satisfy was the `creation of an object using a user-defined geometry.`I tried to satisfy this requirement by using shape and extrude geometry for the creation of a circular table. You will see a function called `createCylinder` that is entirely responsible for the table's meshes. 
+
+Because I chose to make the table entirely out of cylinders, the positioning of the legs became more complicated than I'd like, especially since I just started this homework the day before it was due. I thought of using the Desmos graphing calculator's polar coordinates graph, and I think it turned out well.
+![[Pasted image 20260413201944.png]]
