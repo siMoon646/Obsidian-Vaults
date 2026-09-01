@@ -1,17 +1,3 @@
-
-## Terms
-1) Identifiers:
-	- programmer decided names for things in a program (variables, functions, types, constants, classes, etc.)
-2) Static Binding:
-	- Binding occurs before run-time and are fixed during run-time
-3) Dynamic Binding:
-	- Binding occurs during run-time and 
-	- are changeable during run-time
-4) Expression:
-	- Evaluated for value
-5) Statement: 
-	- Executed for side effect
-
 # 08/31/2026
 ### Binding Times 
 1) Language Definition Time Binding:
@@ -44,6 +30,7 @@
 		4) go back to step 1
 	- Use of assignment to modify the values of variables (abstractions of memory cells).
 2) Functional :
+	- 
 3) Object-Oriented :
 4) Logic/Declarative :
 5) Bottom-up :

@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "ee94954c60836b6a",
+    "id": "39739c0507802e7b",
     "type": "split",
     "children": [
       {
-        "id": "3e3f9da90d456a67",
+        "id": "d3194ace134abd78",
         "type": "tabs",
         "children": [
           {
-            "id": "25616a9ecf2b2d9a",
+            "id": "e9d64eddf03900a5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CISC 3160 - Programming Languages.md",
+                "file": "FA26/CISC3160 - Programming Languages/Terms.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CISC 3160 - Programming Languages"
+              "title": "Terms"
             }
           }
         ]
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "8b6f6e750372f1c7",
+    "id": "f8df38eb4be6d1df",
     "type": "split",
     "children": [
       {
-        "id": "76bf4a834ffce54e",
+        "id": "0ca730402e91b4cd",
         "type": "tabs",
         "children": [
           {
-            "id": "86a2799cf81afbe4",
+            "id": "43e45bd492617e9b",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -50,7 +50,7 @@
             }
           },
           {
-            "id": "091199bbd5fe1841",
+            "id": "4d03dc4d65127275",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -67,7 +67,7 @@
             }
           },
           {
-            "id": "5d24141b55bfdf41",
+            "id": "11c70ddc919b1ed8",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -86,19 +86,20 @@
     "width": 300
   },
   "right": {
-    "id": "8bdc0ddc3c9928df",
+    "id": "a9f1e392a7cf2a24",
     "type": "split",
     "children": [
       {
-        "id": "c57254f5eb5dbc47",
+        "id": "16accbbfb9669ef4",
         "type": "tabs",
         "children": [
           {
-            "id": "b1d14e8d1d25df92",
+            "id": "c2f73b1c9c12f9cc",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
+                "file": "FA26/CISC3160 - Programming Languages/Terms.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,11 +113,12 @@
             }
           },
           {
-            "id": "bb6dc9f9cdb80141",
+            "id": "6911a63955590bb3",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "FA26/CISC3160 - Programming Languages/Terms.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -125,7 +127,7 @@
             }
           },
           {
-            "id": "41fed18d1fb9aac9",
+            "id": "0beb26145d1b0bcb",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -140,7 +142,7 @@
             }
           },
           {
-            "id": "26d6c700c5d557cc",
+            "id": "97a39bbd08e0dc63",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -154,11 +156,12 @@
             }
           },
           {
-            "id": "e7e9d4325eb64387",
+            "id": "b32104ff26c4aca3",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
+                "file": "FA26/CISC3160 - Programming Languages/Terms.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -185,12 +188,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "25616a9ecf2b2d9a",
+  "active": "e9d64eddf03900a5",
   "lastOpenFiles": [
-    "Terms.md",
-    "CISC 3160 - Programming Languages.md",
-    "Untitled.base",
-    "Untitled.canvas",
-    "2026-08-31.md"
+    "FA26/CISC3160 - Programming Languages/CISC 3160 - Programming Languages.md",
+    "FA26/CISC3160 - Programming Languages/Terms.md",
+    "FA26/CISC3160 - Programming Languages/Untitled.base",
+    "FA26/CISC 4900 - Independent Design/CISC 4900.md",
+    "FA26/CISC 4900 - Independent Design/Pasted image 20260828134704.png",
+    "FA26/CISC 4900 - Independent Design/Pasted image 20260828134705.png",
+    "FA26/CISC 4900 - Independent Design/Pasted image 20260828142449.png"
   ]
 }
