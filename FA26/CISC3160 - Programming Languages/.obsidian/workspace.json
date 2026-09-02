@@ -11,10 +11,14 @@
             "id": "7bc5a14c17c9bcad",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "CISC 3160 - Programming Languages.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "CISC 3160 - Programming Languages"
             }
           }
         ]

@@ -21,5 +21,11 @@
 10) Referential transparency:
 	- Expressions and languages if they:
 		1) argument/operands to a function/operator yield the same output irrespective of  the context/environment in which the expression applying the function/operator is evaluated.
+11) Pure: 
+	- A function that does not contain any side effects and returns predictable values.
+12) Monads:
+	- Functions that have side effects, but cannot be called by functions that don't have side effects themselves.
+13) Objects: 
+	- Program entities that encapsulate data and functionality.
 ## 09/02/2026
 1) 
