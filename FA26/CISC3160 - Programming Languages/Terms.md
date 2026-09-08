@@ -1,4 +1,4 @@
-## 08/31/2026
+# Chapter 1:
 1) Identifiers:
 	- programmer decided names for things in a program (variables, functions, types, constants, classes, etc.)
 2) Static Binding:
@@ -27,5 +27,14 @@
 	- Functions that have side effects, but cannot be called by functions that don't have side effects themselves.
 13) Objects: 
 	- Program entities that encapsulate data and functionality.
-## 09/02/2026
-1) 
+# Chapter 2:
+1) Alphabet: 
+	- Finite set of symbols denoted by $\Sigma$ 
+2) String:
+	- Combination of symbols/characters from an alphabet.
+3) Empty String:
+	- String of length zero. Denoted: $\epsilon$
+4) Formal Language:
+	- A set of strings. Subset of the Kleene closure on the alphabet. Each string is a "sentence".
+5) Sentence:
+6) 
