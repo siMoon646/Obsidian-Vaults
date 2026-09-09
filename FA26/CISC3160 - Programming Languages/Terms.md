@@ -37,4 +37,11 @@
 4) Formal Language:
 	- A set of strings. Subset of the Kleene closure on the alphabet. Each string is a "sentence".
 5) Sentence:
-6) 
+	- A string from $\Sigma^*$ in $L$ 
+6) Lexically Valid:
+	- Property of sentence; all the words in sentence are valid.
+7) Syntactically Valid:
+	- Property of sentence; ordering of the words is valid.
+8) Semantically Valid:
+	- Property of sentence; lexically valid + syntactically valid + has a valid meaning.
+9) 
