@@ -28,6 +28,7 @@
 13) Objects: 
 	- Program entities that encapsulate data and functionality.
 # Chapter 2:
+## Formal Languages:
 1) Alphabet: 
 	- Finite set of symbols denoted by $\Sigma$ 
 2) String:
@@ -39,9 +40,27 @@
 5) Sentence:
 	- A string from $\Sigma^*$ in $L$ 
 6) Lexically Valid:
-	- Property of sentence; all the words in sentence are valid.
+	- Property of sentence; all the strings in sentence are valid; the words exist in the relevant alphabet.
 7) Syntactically Valid:
-	- Property of sentence; ordering of the words is valid.
+	- Property of sentence; lexically valid + ordering of the strings is valid.
 8) Semantically Valid:
 	- Property of sentence; lexically valid + syntactically valid + has a valid meaning.
-9) 
+9) Regular Expression:
+	- Pattern representing strings of a language
+10) Candidate Sentences:
+	- Sentences apart of the kleene closure of the alphabet
+## Regular Expressions & Regular Languages:
+1) Regular Expression:
+	- Pattern represented as a string that concisely and formally denotes the strings of a language.
+2) 10) Meta-Language:
+	- Language used to describe a language.
+3) Regular Language: 
+	- Formal language that can be denoted by a regular expression and recognized by a finite-state automaton.
+
+## Grammars & Backus-Naur Form:
+1) Formal Grammar:
+	- Used to define formal language.
+2) Backus-Naur Form:
+	- A metalanguage defining grammars.
+3) Chomsky Hierarchy:
+	- Possessive classification of formal grammars used to describe the syntax of languages.
