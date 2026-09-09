@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "FA26/CISC3160 - Programming Languages/Terms.md",
+                "file": "FA26/CISC3160 - Programming Languages/Homework/Homework 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Terms"
+              "title": "Homework 1"
             }
           }
         ]
@@ -160,7 +160,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "FA26/CISC3160 - Programming Languages/Terms.md",
+                "file": "FA26/CISC3160 - Programming Languages/Homework/Homework 1.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -189,6 +189,8 @@
   },
   "active": "ecba45620af8d4f7",
   "lastOpenFiles": [
+    "FA26/CISC3160 - Programming Languages/Terms.md",
+    "FA26/CISC3160 - Programming Languages/Homework/Homework 1 1.md",
     "FA26/CISC 3810 - Database Systems/Terms.md",
     "FA26/CISC 3810 - Database Systems/CISC 3810 - Database Systems.md",
     "FA26/CISC 3810 - Database Systems",
@@ -196,7 +198,6 @@
     "FA26/CISC3160 - Programming Languages/CISC 3160 - Programming Languages.md",
     "FA26/CISC 4900 - Independent Design/CISC 4900.md",
     "Untitled.md",
-    "FA26/CISC3160 - Programming Languages/Terms.md",
     "FA26/CISC3160 - Programming Languages/Untitled.base",
     "FA26/CISC 4900 - Independent Design/Pasted image 20260828134704.png",
     "FA26/CISC 4900 - Independent Design/Pasted image 20260828134705.png",
