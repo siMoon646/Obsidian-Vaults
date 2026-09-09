@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "3baed96dcff7ecd6",
+        "id": "af1658e9d7c67ec6",
         "type": "tabs",
         "children": [
           {
-            "id": "9dd41c06f7e1eb48",
+            "id": "ecba45620af8d4f7",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "FA26/CISC3160 - Programming Languages/Homework/Homework 1.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Homework 1"
             }
           }
         ]
@@ -90,25 +94,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c2f73b1c9c12f9cc",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "FA26/CISC3160 - Programming Languages/Terms.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-coming-in",
-              "title": "Backlinks"
-            }
-          },
-          {
             "id": "6911a63955590bb3",
             "type": "leaf",
             "state": {
@@ -138,6 +123,24 @@
             }
           },
           {
+            "id": "c2f73b1c9c12f9cc",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
             "id": "97a39bbd08e0dc63",
             "type": "leaf",
             "state": {
@@ -157,7 +160,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "FA26/CISC3160 - Programming Languages/Terms.md",
+                "file": "FA26/CISC3160 - Programming Languages/Homework/Homework 1.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -166,12 +169,12 @@
               "title": "Outline"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -184,13 +187,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "43e45bd492617e9b",
+  "active": "ecba45620af8d4f7",
   "lastOpenFiles": [
-    "Untitled.md",
     "FA26/CISC3160 - Programming Languages/CISC 3160 - Programming Languages.md",
+    "FA26/CISC 4900 - Independent Design/CISC 4900.md",
+    "Untitled.md",
     "FA26/CISC3160 - Programming Languages/Terms.md",
     "FA26/CISC3160 - Programming Languages/Untitled.base",
-    "FA26/CISC 4900 - Independent Design/CISC 4900.md",
     "FA26/CISC 4900 - Independent Design/Pasted image 20260828134704.png",
     "FA26/CISC 4900 - Independent Design/Pasted image 20260828134705.png",
     "FA26/CISC 4900 - Independent Design/Pasted image 20260828142449.png"
