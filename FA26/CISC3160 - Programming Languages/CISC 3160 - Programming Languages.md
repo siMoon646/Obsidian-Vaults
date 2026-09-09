@@ -1,4 +1,4 @@
-# 08/31/2026
+# Chapter 1:
 ### Binding Times 
 1) Language Definition Time Binding:
 	- Arbitrarily decided at language design.
@@ -53,4 +53,16 @@
 7) Language Evaluation: 
 8) Thought Process For Problem Solving:
 
-### Expressions & Statements:
+# Chapter 2: Formal Languages & Grammars:
+## Intro To Formal Languages:
+### Kleene Closure
+- Represents the set of all possible strings formed via zero or more concatenations of the same set of characters.
+- Ex:$$(meat)^* \supset meatmeatmeat\text{, 
+  "meatmeatmeat" is one of the elements in (meat)$^*$}$$
+### What Is A Formal Language?
+- Formal languages $L \subset \Sigma^*$, where each String from $\Sigma^*$ is a sentence.
+
+### Finite Language
+- Formal language with finite number of sentences.
+
+
