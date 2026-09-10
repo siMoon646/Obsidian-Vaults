@@ -1,7 +1,6 @@
-# What Is A Game?
+# Meeting 3: What Is A Game?
 - Fun, subjective. What is a game to some might not be a game to others.
-
-## LeBlanc's Eight Funs:
+## Eight Funs (LeBlanc):
 ### Sensation:
 - Games that engages the senses -- audio-visual. Sensory pleasure.
 ### Fantasy:
@@ -39,3 +38,33 @@
 - Primary fun of community
 ### Killers:
 - Primary fun is competition -- against other players.
+# <hr>
+# Meeting 4: 
+## Game-Spaces: 
+- The environment in which a game is played:
+### Example(s):
+- Tic-tac-toe is played within a 3x3 grid.
+
+### Zero-Space Games:
+- Some games are played only with information.
+#### Example(s):
+- Some games like twenty questions are played without an environment, and are more mental models
+
+## Discrete & Continuous Time:
+- Controls how the game is played, the scheduler for game events.
+
+### Clocks & Races
+- Clocks set time limits on elements of games.
+- Races set time records for events of games.
+
+## Objects, Attributes, States:
+- Objects: Anything that can be modified in a game.
+- Attributes: Properties of objects in a game.
+- States: The shape of data in an attribute.
+## Modes:
+- Some games have subset rules for a nested version of the game with special rules.
+
+## Chance:
+- An element of games that introduces unpredictability to a game.
+
+## <hr>
