@@ -1,0 +1,1 @@
+Swiping should require picture
