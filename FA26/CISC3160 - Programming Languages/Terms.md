@@ -56,11 +56,16 @@
 	- Language used to describe a language.
 3) Regular Language: 
 	- Formal language that can be denoted by a regular expression and recognized by a finite-state automaton.
-
+4) Derivation:
+	- Term for creating a sentence given a grammar
+5) Parsing:
+	- Term for validating string, given grammar and string; apply grammar in reverse until reaching the start symbol.
 ## Grammars & Backus-Naur Form:
 1) Formal Grammar:
 	- Used to define formal language.
 2) Backus-Naur Form:
 	- A metalanguage defining grammars.
 3) Chomsky Hierarchy:
-	- Possessive classification of formal grammars used to describe the syntax of languages.
+	- Classification of formal grammars used to describe the syntax of languages.
+4) Ambiguous Grammar:
+	- If the grammar contains a sentence that can be parsed in more than one way, it is ambiguous.

@@ -87,7 +87,12 @@
 4) $S$ - the start symbol, $S \epsilon V$ 
 
 - Productions are impossible without non-terminal alphabet symbols.
-
+#### Example:
+$$\begin{align}S \rightarrow bT \\ T \rightarrow acT \\ T \rightarrow \epsilon \end{align}$$, where:
+$V = \{S,T\}$
+$\Sigma = \{ a, b, c\}$
+$P = \text{the diagram above}$
+$S = S$
 #### Regular Grammar By Chomsky Hierarchy:
 -  Defines regular grammar:
 	- Is a right-linear grammar: $$\begin{align} X \rightarrow zY \\ X \rightarrow z \end{align}$$
@@ -102,3 +107,32 @@
 
 
 ## Context-Free Languages & Grammars:
+#### Example:
+$A \rightarrow aAbBc$
+$A \rightarrow db$
+$B \rightarrow hBh$
+$B \rightarrow \epsilon$
+
+- Are not classified as "left-linear" or "right-linear" like regex.
+
+**Shift-Reduce Parsing Algorithm:**
+![[Pasted image 20260914120816.png]]
+### Ambiguity
+**Shift reduce conflict:**
+- Issues of shift-reduce parsing algorithm, is that it is ambiguous in parsing order. Some steps potentially could have occurred earlier, but is deferred in favor of some convention of precedence.
+
+**Reduce-reduce conflict:**
+- 
+
+**Parse Trees:**
+- The underlying source of a shift-reduce and reduce-reduce conflict is an ambiguous grammar.
+- Parse of a sentence can be graphically represented.
+- Root of the tree = start symbol.
+
+**Syntactic Ambiguity:**
+
+| Concept             | Syntactic Structure(s) | Meaning  | Example                            |
+| ------------------- | ---------------------- | -------- | ---------------------------------- |
+| Syntactic Ambiguity | multiple               | multiple | They are moving pictures           |
+| Semantic Ambiguity  | one                    | multiple | The mouse was right on my computer |
+**Grammar Disambiguation:**
