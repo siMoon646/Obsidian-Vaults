@@ -2,10 +2,10 @@
 - A 2-d sandbox-platformer with automation elements
 - Pixel graphics; sprites.
 # Inspirations:
-- Satisfactory - Factory elements
+- Satisfactory - Factory elements; structures, scale
 - Subnautica - Plot
 - Factorio - Simplicity of logic
-- Terraria - Survival-craft elements
+- Terraria - 2d; sandbox; survival
 ## Lore Important To Gameplay:
 - Players land on a ruined alien planet with amnesia. They are given a an intact scanner in their lifepod. The scanner is how they learn about the world. 
 - The land is riddled with a blue gas, toxic to the player.
@@ -18,17 +18,24 @@
 		- Something to counteract the blue gas' effects
 - Automation: (Satisfactory + Factorio inspired)
 	- Simple logic with modular game objects that allow players to make creative solutions for their survival needs.
-- Movement:
+- Movement: (each action should consume stamina, except for ones that shouldn't, like crouching).
 	- Sprinting
 	- Jumping
 	- Dodge roll
 	- Crouching
-	- Movement accessories should be a thing (faster movement, more jumps, different, adding dashes, changing some movement behavior, maybe a mount)
-- Combat:
-	- Sword
-	- Shield
-	- Crossbow/Bow
-	- Gun
-	- Spear
-	- Summoning
-	- Parrying
+	- Movement accessories should be a thing (faster movement, additional jumps, different, adding dashes, changing some movement behavior, maybe a mount)
+- Combat: ( choose 3 for mvp )
+	- [ ] Sword
+	- [ ] Shield
+	- [ ] Crossbow/Bow
+	- [ ] Gun
+	- [ ] Spear
+	- [ ] Summoning
+	- [ ] Parrying
+- building:
+	- "just like terraria"
+	- add tools to increase placement speed (for users that like building faster)
+- Goal/Plot:
+	- subnautica style plot -> ship crash -> player is survivor -> explore and gather resources, scan pieces of the world to learn more about it.
+	- Pieces of the crashed ship has been chomped off by huge native bosses.
+	- The player should be directed to the depths of the 
