@@ -135,4 +135,12 @@ $B \rightarrow \epsilon$
 | ------------------- | ---------------------- | -------- | ---------------------------------- |
 | Syntactic Ambiguity | multiple               | multiple | They are moving pictures           |
 | Semantic Ambiguity  | one                    | multiple | The mouse was right on my computer |
-**Grammar Disambiguation:**
+**Grammar Disambiguation Methods:**
+- Either make custom rules for a language, that addresses precendence + associativity.
+- Revise grammar to disambiguate it.
+	- Some grammars can modify productions to reduce ambiguity caused by precendence.
+
+## Constructs and Capabilities:
+
+
+

@@ -69,3 +69,5 @@
 	- Classification of formal grammars used to describe the syntax of languages.
 4) Ambiguous Grammar:
 	- If the grammar contains a sentence that can be parsed in more than one way, it is ambiguous.
+5) Desideratrum:
+	- Precedence + Associativity

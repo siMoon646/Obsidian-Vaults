@@ -40,7 +40,25 @@
 8) Analytical database:
 	- Stores historical data and business metrics used exclusively for tactical or strategic decision making.
 
+# Data Modeling & Data Models
+1) Attribute:
+	- Characteristics of an entity, described as a concept.
+2) Field:
+	- The implementation of an attribute in a database.
+3) Relationship:
+	- Association among entities describing how they interact in the real world.
+4) Entities:
+	- Person, place, thing, or event about which data will be collected and stored.
+5) Constraints:
+	- Restriction placed on data.
+
+# Data Model Basic Building Blocks:
+1) Relationships:
+	- One-to-many, 1:M
+	- Many-to-many M:M
+	- One-to-one 1:1
 ## Other
 1) Extensible Markup Language (XML):
 	- Represents and manipulates data elements in textual format.
-\
+2) Problem Domain:
+	- The problem to be solved.
