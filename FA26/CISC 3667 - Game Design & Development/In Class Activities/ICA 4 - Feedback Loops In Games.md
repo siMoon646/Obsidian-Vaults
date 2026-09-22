@@ -1,5 +1,8 @@
-Name : Simon Tang
-Partner: Tori Yu 
+Name : 
+- Simon Tang
+
+Partner: 
+- Tori Yu 
 (I forgot to ask their name again... but I think this is right)
 
 # Preface:
