@@ -114,6 +114,7 @@ $B \rightarrow hBh$
 $B \rightarrow \epsilon$
 
 - Are not classified as "left-linear" or "right-linear" like regex.
+- Productions enlosed with brackets are optional.
 
 **Shift-Reduce Parsing Algorithm:**
 ![[Pasted image 20260914120816.png]]
@@ -140,7 +141,14 @@ $B \rightarrow \epsilon$
 - Revise grammar to disambiguate it.
 	- Some grammars can modify productions to reduce ambiguity caused by precendence.
 
-## Constructs and Capabilities:
+# Chapter 3:
+## Scanning and Parsing
+- Required by all programming languages before interpretation.
+- Scanning $\leftrightarrow$ Lexical Analysis
+
+**Data Flow:**
+ Source program (Strig of lexemes) $\rightarrow$ (regular grammar) scanner $\rightarrow$ list of tokens $\rightarrow$ (context free grammar) parser $\rightarrow$ abstract-syntax tree..
 
 
 
+  
