@@ -71,3 +71,10 @@
 	- If the grammar contains a sentence that can be parsed in more than one way, it is ambiguous.
 5) Desideratrum:
 	- Precedence + Associativity
+
+# Chapter 3:
+## Scanning and Parsing:
+1) Lexical Analysis:
+	- Alternative term for scanning.
+2) Lexemes:
+	- Tokens that compose a string.
