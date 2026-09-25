@@ -17,7 +17,6 @@
 - Comes from personalization of a game -- the player can integrate themselves into the game
 ### Submission:
 - Playing the game mindlessly.
-
 ## Four Keys To Fun:
 ### Hard Fun:
 - Pleasure of achieving something.
