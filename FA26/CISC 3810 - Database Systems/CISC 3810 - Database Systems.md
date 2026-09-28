@@ -1,6 +1,3 @@
-# 09.08.2026
-"databases are useful ahh class" - literally spending 30 minutes giving examples.
-
 # 09.17.2026
 ## Data Modeling & Data Models:
 - Data model $\leftrightarrow$ Database model
@@ -62,8 +59,86 @@ Constraints help ensure data integrity.
 - **Structural dependence:** File systems exhibit structural dependence; access to a file is dependent on its own structure.
 - **Structural independence:** Exists when file structure is changed without affecting the application's ability to access data.
 	- *Example: changing data metadata such as integer to decimal, will not hinder the program's access to  data*
-- **Data dependnce:** A program is tied to the exact way that its data is stored in a file.
+- **Data dependence:** A program is tied to the exact way that its data is stored in a file.
 
+## Data Redundancy:
+- Consequences:
+	- Difficult to combine data from multiple sources.
+	- Promotes repetitions of the same basic data in different locations.
+	- **Poor Data Security:** Results from having multiple copies of the same data. A copy can be easier obtained if many of them exist.
+	- **Data inconsistency:** Exists when different and conflicting versions of the same data appears in different places.
+	- **Data-entry errors:** Likely to occur for complex entries when they need to be repeatedly entered.
+	- **Data integrity problems**: When the same data is stored as separate copies rather than through a single, controlled source, there's nothing to verify that those copies are accurate or real. This allows false, invalid, or nonexistent data to be entered into the system without being caught.
+
+## Data Anomalies:
+- Develop when not all of the required changes in redundant data are made successfully. 
+
+### Types:
+1) **Update anomalies**:
+	- Changing information forces you to make the same change in multiple places, because it was stored redundantly. If you miss even one, the data becomes inconsistent.
+2) **Insertion anomalies**:
+	- Unable to add a new piece of information because some other, unrelated piece of information isn't available yet.
+3) **Deletion anomalies**:
+	- Deleting one piece of information accidentally wipes out other information you wanted to keep, because they were stored together.
+
+## Database System:
+- Organization of components that define and regulate the collection, storage, management, and use of data within a database environment.
+### Components:
+1) Hardware
+2) **Software**: 
+	- Three types:
+		1) Operating system:
+			- Manages all hardware components and makes it possible for all other software to run on the computers.
+		2) DBMS software:
+			- Manages database within the database system (e.g: Microsoft SQL server, MySQL).
+		3) Application programs and utilities software:
+			- To access and manipulate data in the DBMS and manage the computers environment in which data access and manipulation takes place.
+			- Utilities:
+				- Software tools used to help manage the database system's computer components (e.g: GUI for database management, tools for controlling database access, tools for monitoring database operations).
+3) **People**:
+	- All users of the database system.
+	- Five types:
+		1) System admins
+		2) Database admins
+		3) Database designers
+		4) System analyst & programmers
+		5) End users
+4) **Procedures**: 
+	- Instructions and rules that govern design and use of db systems.
+5) **Data**:
+	- Collection of facts stored in the database.
+
+## Database Functions:
+- Most DB functions are transparent to end users.
+- Types:
+	1) **Data dictionary management**:
+		- **Data dictionary:**
+			- Stores definition of data elements and their relationships.
+	2) **Data storage management (/optimization)**:
+		- Performance tuning ensures efficient performance.
+	3) **Data transformation and presentation**:
+		- Stored data is converted into a syntactic format that people can expect and understand, without changing its meaning.
+	4) **Security management**: 
+		- Enforces user security and data privacy
+	5) **Multi-user access control**:
+		- Multiple users can access the DB concurrently without compromising its integrity.
+	6) **Backup & recovery management**:
+		- Enables recovery of the database after a failure.
+	7) **Data integrity management**:
+		- Minimizes redundancy and maximizes consistency.
+	8) DB access langs & Application programming interfaces:
+		- **Declarative programming language/Query language**:
+			- Lets the user specify what must be done without specifying how.
+	9) Database communication interfaces:
+		- Accept end-user requests in a network (local or foreign).
+
+## Managing DBS:
+### Cons of DBS:
+1) Increased cost
+2) Management complexity
+3) Maintaining currency
+4) Vendor dependence
+5) Frequent upgrade/replacement cycles.
 # Chapter 2: 
 ## Business Rules:
 - Company managers 
