@@ -46,7 +46,6 @@ Constraints help ensure data integrity.
 	- **Discipline-specific database**: contains data focused on specific subject areas. (e.g: The data in this type of database is used mainly for academic or research purposes within a small set of disciplines)
 - **Operational database**: Designed to support a company's day-to-day operations.
 - **Analytical database**: Stores historical data and business metrics used exclusively for tactical or strategic decision making.
-	- This type of database requires extensive data manipulation.
 #### Types of Data in Databases:
 - **Unstructured data:** Raw data; unprocessed.
 - **Structured data**: Results from formatting unstructured data to facilitate storage, use, and generation of **information**.
@@ -56,8 +55,10 @@ Constraints help ensure data integrity.
 - Represents and manipulates data elements in textual format.
 
 ## Structural and Data Dependence:
-- **Structural dependence:** File systems exhibit structural dependence; access to a file is dependent on its own structure.
-- **Structural independence:** Exists when file structure is changed without affecting the application's ability to access data.
+- **Structural dependence:** 
+	- File systems exhibit structural dependence; access to a file is dependent on its own structure.
+- **Structural independence:** 
+	- Exists when file structure is changed without affecting the application's ability to access data.
 	- *Example: changing data metadata such as integer to decimal, will not hinder the program's access to  data*
 - **Data dependence:** A program is tied to the exact way that its data is stored in a file.
 
@@ -65,10 +66,14 @@ Constraints help ensure data integrity.
 - Consequences:
 	- Difficult to combine data from multiple sources.
 	- Promotes repetitions of the same basic data in different locations.
-	- **Poor Data Security:** Results from having multiple copies of the same data. A copy can be easier obtained if many of them exist.
-	- **Data inconsistency:** Exists when different and conflicting versions of the same data appears in different places.
-	- **Data-entry errors:** Likely to occur for complex entries when they need to be repeatedly entered.
-	- **Data integrity problems**: When the same data is stored as separate copies rather than through a single, controlled source, there's nothing to verify that those copies are accurate or real. This allows false, invalid, or nonexistent data to be entered into the system without being caught.
+	- **Poor Data Security:** 
+		- Results from having multiple copies of the same data. A copy can be easier obtained if many of them exist.
+	- **Data inconsistency:** 
+		- Exists when different and conflicting versions of the same data appear in different places.
+	- **Data-entry errors:** 
+		- Likely to occur for complex (long, detailed, hard to read) entries when they need to be repeatedly entered.
+	- **Data integrity problems**: 
+		- Because data can be entered without being validated with a source of truth. It is possible to enter inaccurate data, making the data less reliable.
 
 ## Data Anomalies:
 - Develop when not all of the required changes in redundant data are made successfully. 
@@ -76,11 +81,13 @@ Constraints help ensure data integrity.
 ### Types:
 1) **Update anomalies**:
 	- Changing information forces you to make the same change in multiple places, because it was stored redundantly. If you miss even one, the data becomes inconsistent.
+	- Occurs while updating existing data.
 2) **Insertion anomalies**:
 	- Unable to add a new piece of information because some other, unrelated piece of information isn't available yet.
+	- Occurs while inserting new data.
 3) **Deletion anomalies**:
 	- Deleting one piece of information accidentally wipes out other information you wanted to keep, because they were stored together.
-
+	- Occurs when deleting existing data.
 ## Database System:
 - Organization of components that define and regulate the collection, storage, management, and use of data within a database environment.
 ### Components:
