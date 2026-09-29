@@ -157,8 +157,6 @@ Constraints help ensure data integrity.
 ## Translating Business Rules
 - Bidirectional relationships: "How does entity A relate to entity B, and how dos B relate to A?"
 
-## Naming Conventions:
-
 ## Database Model Types:
 - **Hierarchical Data Models:**
 	- Manage large amounts of data for complex manufacturing projects.
