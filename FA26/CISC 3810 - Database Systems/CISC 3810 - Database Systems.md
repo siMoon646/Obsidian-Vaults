@@ -148,6 +148,7 @@ Constraints help ensure data integrity.
 5) Frequent upgrade/replacement cycles.
 # Chapter 2: 
 ## Business Rules:
+**Come From:**
 - Company managers 
 - Policy makers
 - Department managers
