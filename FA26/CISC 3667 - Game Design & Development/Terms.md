@@ -29,3 +29,16 @@
 	- Tips to playing closer to most effective tactics available.
 8) House rules:
 	- When games are tuned to suit the tastes of a group of players, given that the participants consent to these amended rules.
+
+# Randomness and Probability:
+1) Randomness:
+	- Outcome is uncertain.
+2) Probability: 
+	- Likelihood of each outcome.
+3) Probability distribution curve:
+	- Visual representation of tallied outcome.
+# Expected Value:
+1) Conditional Factors:
+	- Boosts expected value based on the conditions of a situation.
+2) Conjunction Fallacy:
+	- Tendency for people to believe that specific conditions are more probable than a single general one.

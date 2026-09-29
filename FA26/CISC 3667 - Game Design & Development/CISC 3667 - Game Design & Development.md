@@ -66,8 +66,51 @@
 ## Chance:
 - An element of games that introduces unpredictability to a game.
 
-## <hr>
+# <hr>
+
 
 # Meeting 5:
 
-## <hr>
+# <hr>
+# Meeting 6: 
+## Randomness and Probability:
+**The total number of outcomes for rolling a 6-sided die 4 times**
+$6^4 = 1296$  total sequences
+$5^4 = 625$ total sequences that exclude 1 
+$1296 - 625 = 671$ total sequences that include 1
+
+$P(\text{ sequence contains } 1) = 671/1296 \approx 0.5 \text{ or } 50\%$ 
+
+## Expected Value: 
+- How much value an action./entity has in a game.
+
+### Conjunction Fallacy:
+	$Pr(A \wedge B) \leq Pr(A)$
+	Recall that $A$ is present in both. If a conjunction is made with $A$ the probability of just $A$ is always higher.
+### Law of Small Numbers:
+- Mistaken belief that small samples will reflect the properties of the larger population from which they are drawn.
+
+### Representativeness Heuristic:
+- Mental shortcut that people use to judge the probability of an event based on how similar it is to a prototype or stereotype.
+
+### Baye's Theorem:
+- Mathetmical formula that describes how to update the probability based on new evidence:
+
+	$Pr(A|B) = [Pr(B|A \times Pr(A)]/Pr(B)$
+
+### Skill and Chance:
+#### Estimating Chance As A Skill:
+- In many games, what separates the skilled players from the unskilled is their ability to predict what is going to happen next, often through calculating probabilities.
+
+#### Skills Have Probability Of Success:
+- Naively, one might think that completely skill-based games, such as chess or baseball, have no aspects of randomness or risk in them.
+
+#### Estimating An Opponent's Skill Is A Skill:
+- Players estimating an opponent's success.
+
+#### Predicting Pure Chance Is An Imagined Skill:
+- Humans look for patterns, consciously and subconsciously, to help predict what is going to happen next. Our mania for patterns often leads us to look for an find patterns where none exist.
+
+#### Controlling Pure Chance Is An Imagined Skill:
+- Not only do our brains actively seek patterns, but they also actively and desperately seek cause-and-effect relationships.
+# <hr>
