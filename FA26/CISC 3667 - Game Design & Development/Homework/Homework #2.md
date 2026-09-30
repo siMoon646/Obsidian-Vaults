@@ -4,7 +4,7 @@ A die is rolled, and a coin is tossed. Find the probability that **the die**
 ### Solution:
 - $A = Pr(\text{Odd Roll}) = \frac{1}{2}$  
 - $B = Pr(\text{Head Coin-Toss}) = \frac{1}{2}$
-- $Pr(\text{Odd Roll \& Head Coin-Toss}) = A \times B = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4} = 25\%$
+- $Pr(\text{Odd Roll And Head Coin-Toss}) = A \times B = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4} = 25\%$
 
 ### Answer:
 - There is 25% chance that the dice rolls odd and the coin lands, showing heads.
