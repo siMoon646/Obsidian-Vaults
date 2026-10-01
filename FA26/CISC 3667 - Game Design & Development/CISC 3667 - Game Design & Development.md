@@ -114,3 +114,4 @@ $P(\text{ sequence contains } 1) = 671/1296 \approx 0.5 \text{ or } 50\%$
 #### Controlling Pure Chance Is An Imagined Skill:
 - Not only do our brains actively seek patterns, but they also actively and desperately seek cause-and-effect relationships.
 # <hr>
+
