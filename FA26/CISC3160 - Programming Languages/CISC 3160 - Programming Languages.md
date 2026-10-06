@@ -151,7 +151,3 @@ $B \rightarrow \epsilon$
 
 # Chapter 4:
 
-
-
-
-  

@@ -200,3 +200,42 @@ Constraints help ensure data integrity.
 
 ![[Pasted image 20260924102329.png]]
 For this semester, we will be using the crow's foot notation.
+
+## Object-Oriented Data Model:
+- Data and relationships contained in single object structure.
+- **Object:**
+	- Data and their relationships
+	- Contains methods form modifying data.
+### Components Of Object Oriented Model:
+1) Objects
+	- Abstracition of real-world entity. IN general terms, equivalent to ER model's enttity.
+2) Attributes
+	- Describe the proerpties of the object.
+3) Method
+	- Represents real-world actions such as finding a selected PERSON's name, changing PERSON's name, or printing PERSON's address.
+	- Define an object's behavior
+4) Class
+	- Collection of similar objects with shared structure (attributes and method).
+5) Inheritance
+	- Ability of an object within a class hierarchy to inherit the attributes and methods of classes above is.
+
+### UML (Unified Modeling Language):
+- language based on OO concepts that describes a set of diagrams and symbols you can use to graphically model a system.
+## Object/Relational & XML:
+- **XML:**
+	- Extended Markup Language
+### Big Data:
+**Characteristics:**
+- **Volume:**
+	- Quantity of data being stored.
+- **Velocity:**
+	- Speed at which data grows
+	- Speed to process data to generate information.
+- **Variety:**
+	- Refers to variation in data format.
+#### Arising Issues Of Big Data:
+- Volume makes conventional storage solutions impractical.
+- Expensive
+- OLAP tools proved insufficient to deal with unstructured data.
+#### NoSQL database:
+- Addresses problems caused by *Big Data*.
