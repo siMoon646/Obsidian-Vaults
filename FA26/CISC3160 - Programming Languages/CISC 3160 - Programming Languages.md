@@ -150,4 +150,74 @@ $B \rightarrow \epsilon$
  Source program (Strig of lexemes) $\rightarrow$ (regular grammar) scanner $\rightarrow$ list of tokens $\rightarrow$ (context free grammar) parser $\rightarrow$ abstract-syntax tree..
 
 # Chapter 4:
+- How programming languages behave from the human perspective???
+## Compiled: ?
+- Language...
+## Hybrid:
+- Some language use a hybrid of compiler + interpreter.
+### Example(s) Of Hybrid Language(s):
+- Takes a source language -> translates it -> puts translation into a VM for interpretation.
+## Interpreted:
+- Take source code and run it. (An interpreter may translate to a lower-level language or machine code)
+### Example(s) Of Interpreted Language(s):
+- Python.
+# Chapter 5: 
+## The Big Scheme: 
+## File Extension:
+- `scm`
+## Hello World Program:
+`(display "Hello, World)`
+`(newline)`
+
+## ...
+- Literals are printed to terminal/console
+- Expressions are printed to terminal console
+- Comments are pre-fixed with `;
+- Scheme's "procedures" = Java's "functions"
+- Operators have values: 
+	- `+ ; #<procedure:+>`
+- Operators are not necessarily binary:
+	- `(+ 1 2 3) ; 6`
+- Procedures are applied (called) via:
+	- `( <procedure name> <arguments> )`
+- `(1 + 2 +3) * ( 4 - 5) + 6`
+- `(+ (* (+ 1 2 3) (- 4 5)) 6) ; 0`
+- Making variables:
+	- `(define pi 3.1415)`
+	- `pi ; 3.1415`
+- Identifier Rules In Scheme: 
+	- can contain '-', '?', '!', etc.
+- How to create own procedures with lambda:
+		- `(lambda (<arguments>) (<expression>))`
+	- `(lambda (x) (+ x 1))`
+		- this procedure has no name; anonymous procedure that takes an input and increments it.
+		- Give it name by:
+		- `(define sucessor`(lambda (x) (+ x 1))``
+- Special Forms; Not Procedures.
+	- `define`
+	- `lambda`
+	- `if`
+	- **Rule For Special Forms:**
+		- They do not need to fully evaluate before running.
+- Conditionals:
+	- **If Statements:**
+		- `(if (<condition>) (<true case>) (false case))`
+	- **Switch/Case:**
+		- `(cond
+		  `((<condition>) (<output>)
+		  `((<condition2>) (<output2)
+		  `(else (<default case>))`
+- Creating more interesting data:
+
+| Pairs       |              |
+| ----------- | ------------ |
+| Operation   | Procedure    |
+| Create Pair | `(cons x y)` |
+| Get First   | `(car p)`    |
+| Get Second  | `(cdr p)`    |
+`(define p (cons 10 20)))` or `(define p `
+(10 . 20)`
+`p         ; (10 . 20)`
+`(car p)   ; 10`
+`(cdr p)   ; 20`
 
