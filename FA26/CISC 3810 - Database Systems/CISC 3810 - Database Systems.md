@@ -239,3 +239,50 @@ For this semester, we will be using the crow's foot notation.
 - OLAP tools proved insufficient to deal with unstructured data.
 #### NoSQL database:
 - Addresses problems caused by *Big Data*.
+
+
+# Chapter 3:
+## Relations/Tables:
+- Data relationships based on a logical construct known.
+- Alternative term: "Table"
+	- Because, contains a group of related entity occurrences.
+- Must have an attribute or combination of attributes that uniquely identifies each row.
+### Row/Tuple:
+- Represents an entity instance in the relation/table.
+- Conventionally, order of rows is unimportant.
+### Column:
+- Represents an attribute/field. Columns are distinct.
+- All data must conform to the same data format.
+- Conventionally, order of columns is unimportant.
+### Intersection Of Rows & Columns:
+- Represents a data value about an entity.
+# Keys:
+### Primary Key:
+- Attribute, or set of attributes, that uniquely identifies each row in a table
+## Super Key:
+- Uniquely identifies any row in the table
+## Candidate key:
+- Minimal "super key"; super key that without unnecessary attributes.
+- Multiple can exist 
+- Called such because these are the keys from which the designer may pick the primary key.
+## Foreign Key:
+- Primaruy key of one table that has been placed into another table to create a common attribute.
+### Dependencies:
+- **Determination:**
+	- The state in which knowing the value of one attribute makes it possible to determine the value of another.
+	- **Ex:**
+		- If you have recorded attributes for PRODUCTION_COST and SALE_PRICE, then PRODUCTION COST - SALE_PRICE = profit. and PROFIT can be an attribute for profit.
+- **Functional Dependency:**
+	- An attribute (usually a primary key) of an entity can be used to determine other attributes of that same entity.
+- **Partial Dependency:**
+	- When an attribute depends on only _part_ of a composite primary key instead of the whole key.
+- **Full Functional Dependency:**
+	- Refer to functional dependencies in which the entire collection of attributes in the determinant is necessary for the relationship.
+
+## Entity Integrity:
+- Condition in which each row (entity instance) in the table has its own unique identity.
+### Conditions:
+1) All of the values in the primary key must be unique.
+2) No key attribute in the primary key can contain a null.
+
+
