@@ -26,11 +26,11 @@ const enemy = {
 };
 ```
 
-I thought about it as if both entities were already touching--I want the minimum gap:
+**I thought about it as if both entities were already touching--I want the minimum gap:**
 - Pe1
-Then I give one of them--`e1`, their size $/2$. `e1` is now buffered by $25$ units on both sides.
+**Then I give one of them--`e1`, their size $/2$. `e1` is now buffered by $25$ units on both sides.**
 - P|...25...e1...25...|
-Then I give the other--`P`, their size $/2$. `P` is now buffered by $12$ units on both sides.
+**Then I give the other--`P`, their size $/2$. `P` is now buffered by $12$ units on both sides.**
 - |...12...P...12...||...25...e1...25|
 $12 + 25 = 37$. So when two objects are $37$ units apart, those respective objects have made contact.
 I have a generalized formula for calculating this in the game's implemented `script.js` that's used in a function for checking collisions specifically with the player.
