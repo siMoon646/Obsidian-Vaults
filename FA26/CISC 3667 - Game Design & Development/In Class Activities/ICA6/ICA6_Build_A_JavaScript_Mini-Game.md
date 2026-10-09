@@ -7,7 +7,7 @@
 - The game objects and states that my game tracks are players, enemies, and time. Players and enemies have their positions and directions tracked, while time simply progresses in accordance with real-time. 
 
 ## How does your game detect contact or collisions?
-My game checks for collisions by finding the minimum gap, before objects are considered "touching".  See below:
+- My game checks for collisions by finding the minimum gap, before objects are considered "touching".  See below:
 
 ```
 const player = {
