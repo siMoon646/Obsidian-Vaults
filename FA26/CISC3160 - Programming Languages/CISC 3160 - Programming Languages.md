@@ -197,6 +197,8 @@ $B \rightarrow \epsilon$
 	- `define`
 	- `lambda`
 	- `if`
+	- `cond`
+	- `quote`
 	- **Rule For Special Forms:**
 		- They do not need to fully evaluate before running.
 - Conditionals:
@@ -208,16 +210,30 @@ $B \rightarrow \epsilon$
 		  `((<condition2>) (<output2)
 		  `(else (<default case>))`
 - Creating more interesting data:
+- Quotes:
+	- Returns the subsequent word as a "symbol" data type.
+		- `(quote a); a`
+		- `(+ 1 (quote a)); error`
+	- Syntactic Sugar:
+		- 'item' is treated as (quote item)
 
-| Pairs       |              |
-| ----------- | ------------ |
-| Operation   | Procedure    |
-| Create Pair | `(cons x y)` |
-| Get First   | `(car p)`    |
-| Get Second  | `(cdr p)`    |
+| Pairs       |              |                                                     |
+| ----------- | ------------ | --------------------------------------------------- |
+| Operation   | Procedure    | Meaning                                             |
+| Create Pair | `(cons x y)` | constructs a pair of `x` and `y`                    |
+| Get First   | `(car p)`    | Contents of Address Register; left value of pair    |
+| Get Second  | `(cdr p)`    | Contents of Decrement Register; right value of pair |
+
 `(define p (cons 10 20)))` or `(define p `
 (10 . 20)`
+
+(cons 1 2) -> creates a pair; (1 . 2)
+(cons 1 (cons 2 '())) -> creates a proper list; (1 2) 
 `p         ; (10 . 20)`
 `(car p)   ; 10`
 `(cdr p)   ; 20`
 
+- Scheme built-in procedures for lists:
+	- `(length L); L is a list`
+	- `(list '(1 3) '(2) '() '(3 0); ((1 3) (2) () (3 0))`
+	- `(append L1 L2 ...); takes 2+ araguments. Returns a new list composed of all the arguments appended togther.
