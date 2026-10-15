@@ -1,16 +1,4 @@
-# 09.17.2026
-## Data Modeling & Data Models:
-- Data model $\leftrightarrow$ Database model
-- An implementation ready data model should contain at least the following components:
-	1) Description of the data structure that will store the end user data.
-	2) A set of enforceable rules to guarantee the integrity of the data.
-		- For example, a rule dictating uniqueness of data.
-	3) A set of manipulation methodology to support the real world data transformations.
-		- For example, fields from two different tables might need to be updated in a single transaction.
-
-## Data Model Basic Building Blocks:
-Constraints help ensure data integrity.
-# Chapter 1:
+2# Chapter 1:
 ## Importance of Databases:
 - Lots of data in real world that needs organizing.
 - Relationships between data for inferring modern needs.
@@ -19,16 +7,16 @@ Constraints help ensure data integrity.
 - **Data**: 
 	- Raw facts; not yet processed to reveal meaning to the end user.
 	- Building blocks of information.
-- Information:
+- **Information**:
 	- Results from processing raw data with respect to some context.
 
 ## Introducing the Database (DB):
 - **Database (DB)**:
 	1) Shared, data-structure that may contain:
 		1) **End-user data**: raw facts of interest of end user.
-		2) **Metadata**: data about data, through which then end-user data is integrated and managed; describes data characteristics and relationships.
+		2) **Metadata**: data about data, through which the end-user data is integrated and managed; describes data characteristics and relationships.
 			- Metadata of a UUID is that a UUID is a String.
-- **Database Management System: (DBMS)** 
+- **Database Management System (DBMS):** 
 	- Collection of programs
 	- Manages database structure
 	- Control access to data stored in the DB.
@@ -59,15 +47,17 @@ Constraints help ensure data integrity.
 	- File systems exhibit structural dependence; access to a file is dependent on its own structure.
 - **Structural independence:** 
 	- Exists when file structure is changed without affecting the application's ability to access data.
-	- *Example: changing data metadata such as integer to decimal, will not hinder the program's access to  data*
+	- *Example: adding a new column to a table does not break programs that read the existing columns.*
 - **Data dependence:** A program is tied to the exact way that its data is stored in a file.
+- **Data independence:** Exists when data storage characteristics can change without affecting the program's ability to access the data.
+	- *Example: changing a field from integer to decimal does not hinder the program's access to the data.*
 
 ## Data Redundancy:
 - Consequences:
 	- Difficult to combine data from multiple sources.
 	- Promotes repetitions of the same basic data in different locations.
 	- **Poor Data Security:** 
-		- Results from having multiple copies of the same data. A copy can be easier obtained if many of them exist.
+		- Results from having multiple copies of the same data: more copies means more chances for unauthorized access.
 	- **Data inconsistency:** 
 		- Exists when different and conflicting versions of the same data appear in different places.
 	- **Data-entry errors:** 
@@ -94,12 +84,12 @@ Constraints help ensure data integrity.
 1) Hardware
 2) **Software**: 
 	- Three types:
-		1) Operating system:
+		1) **Operating system:**
 			- Manages all hardware components and makes it possible for all other software to run on the computers.
-		2) DBMS software:
+		2) **DBMS software:**
 			- Manages database within the database system (e.g: Microsoft SQL server, MySQL).
-		3) Application programs and utilities software:
-			- To access and manipulate data in the DBMS and manage the computers environment in which data access and manipulation takes place.
+		3) **Application programs and utilities software:**
+			- To access and manipulate data in the DBMS and manage the computer environment in which data access and manipulation takes place.
 			- Utilities:
 				- Software tools used to help manage the database system's computer components (e.g: GUI for database management, tools for controlling database access, tools for monitoring database operations).
 3) **People**:
@@ -133,20 +123,32 @@ Constraints help ensure data integrity.
 		- Enables recovery of the database after a failure.
 	7) **Data integrity management**:
 		- Minimizes redundancy and maximizes consistency.
-	8) DB access langs & Application programming interfaces:
+	8) **DB access languages & application programming interfaces:**
 		- **Declarative programming language/Query language**:
 			- Lets the user specify what must be done without specifying how.
-	9) Database communication interfaces:
+	9) **Database communication interfaces:**
 		- Accept end-user requests in a network (local or foreign).
 
 ## Managing DBS:
 ### Cons of DBS:
 1) Increased cost
 2) Management complexity
-3) Maintaining currency
+3) Maintaining currency (keeping the system up to date)
 4) Vendor dependence
 5) Frequent upgrade/replacement cycles.
 # Chapter 2: 
+## Data Modeling & Data Models:
+- Data model $\leftrightarrow$ Database model (the terms are used interchangeably)
+- An implementation ready data model should contain at least the following components:
+	1) Description of the data structure that will store the end user data.
+	2) A set of enforceable rules to guarantee the integrity of the data.
+		- For example, a rule dictating uniqueness of data.
+	3) A set of data manipulation methodologies to support the real world data transformations.
+		- For example, fields from two different tables might need to be updated in a single transaction.
+
+## Data Model Basic Building Blocks:
+Constraints help ensure data integrity.
+
 ## Business Rules:
 **Come From:**
 - Company managers 
@@ -156,21 +158,21 @@ Constraints help ensure data integrity.
 - Direct interview with end users
 
 ## Translating Business Rules
-- Bidirectional relationships: "How does entity A relate to entity B, and how dos B relate to A?"
+- Bidirectional relationships: "How does entity A relate to entity B, and how does B relate to A?"
 
 ## Database Model Types:
 - **Hierarchical Data Models:**
 	- Manage large amounts of data for complex manufacturing projects.
-	- Represented by upside-down tree. $\rightarrow$
+	- Represented by an upside-down tree.
 		- Levels or segments.
 	- Depicts a set of one-to-many (1:M) relationships.
 - **Network Models:**
-	- Network model. Instead of the tree-style of the hierarchical data model, that allows only one parent of each child record, the network model allows records to have more than one parent.
-	- **Schema & Subschema:
+	- Instead of the tree-style of the hierarchical data model, that allows only one parent of each child record, the network model allows records to have more than one parent.
+	- **Schema & Subschema:**
 		- **Schema:** Conceptual organization of the entire database.
 		- **Subschema:** Defines the portion of the database "seen" by the application programs that actually produce the desired data. 
 	- **Data Manipulation Language (DML):**
-		- Defines env in which data can be managed.
+		- Defines the environment in which data can be managed.
 		- Used to modify data in DB.
 	- **Data Definition Language (DDL):**
 		- Enables DB admin to define schema components.
@@ -179,17 +181,17 @@ Constraints help ensure data integrity.
 		- **ad hoc query:**
 			- A one-off question, written on the spot, needing an answer right now, rather than one built into a program in advance.
 ### Relational Database Management Systems (RDBMS):
-- Keeps your data in linked models(tables), stores each fact once, enforces rules to keep it correct, and lets you ask questions in plain, structured language.
-		- **Structured Query Language (SQL):** A programming language of the logical nature; allows the user to query the database without specifying how.
-		- SQL-based Relational DB application involves:
-			- User interface
-			- Tables stored in the database
-			- SQL "egine" - like a compiler/interpreter for SQL.
+- Keeps your data in linked tables (relations), stores each fact once, enforces rules to keep it correct, and lets you ask questions in plain, structured language.
+- **Structured Query Language (SQL):** A declarative language; the user specifies *what* data they want, not *how* to retrieve it.
+- SQL-based Relational DB application involves:
+	- User interface
+	- Tables stored in the database
+	- SQL "engine": like a compiler/interpreter for SQL.
 
 ### Entity Relationship Model:
 - **Entity relationship diagram (ERD):**
 	- Uses graphic representation to model database components.
-- Entity: 
+- **Entity:** 
 	- the _kind_ of thing you track (Customer) and corresponds to the whole table
 - **Entity instance or entity occurrence:**
 	- Rows in the relational table
@@ -205,26 +207,26 @@ For this semester, we will be using the crow's foot notation.
 - Data and relationships contained in single object structure.
 - **Object:**
 	- Data and their relationships
-	- Contains methods form modifying data.
+	- Contains methods for modifying data.
 ### Components Of Object Oriented Model:
 1) Objects
-	- Abstracition of real-world entity. IN general terms, equivalent to ER model's enttity.
+	- Abstraction of a real-world entity. In general terms, equivalent to the ER model's entity.
 2) Attributes
-	- Describe the proerpties of the object.
+	- Describe the properties of the object.
 3) Method
 	- Represents real-world actions such as finding a selected PERSON's name, changing PERSON's name, or printing PERSON's address.
 	- Define an object's behavior
 4) Class
 	- Collection of similar objects with shared structure (attributes and method).
 5) Inheritance
-	- Ability of an object within a class hierarchy to inherit the attributes and methods of classes above is.
+	- Ability of an object within a class hierarchy to inherit the attributes and methods of classes above it.
 
 ### UML (Unified Modeling Language):
 - language based on OO concepts that describes a set of diagrams and symbols you can use to graphically model a system.
 ## Object/Relational & XML:
 - **XML:**
-	- Extended Markup Language
-### Big Data:
+	- Extensible Markup Language
+## Big Data:
 **Characteristics:**
 - **Volume:**
 	- Quantity of data being stored.
@@ -243,7 +245,7 @@ For this semester, we will be using the crow's foot notation.
 
 # Chapter 3:
 ## Relations/Tables:
-- Data relationships based on a logical construct known.
+- Data relationships based on a logical construct known as a **relation**.
 - Alternative term: "Table"
 	- Because, contains a group of related entity occurrences.
 - Must have an attribute or combination of attributes that uniquely identifies each row.
@@ -256,22 +258,26 @@ For this semester, we will be using the crow's foot notation.
 - Conventionally, order of columns is unimportant.
 ### Intersection Of Rows & Columns:
 - Represents a data value about an entity.
-# Keys:
+## Keys:
 ### Primary Key:
 - Attribute, or set of attributes, that uniquely identifies each row in a table
-## Super Key:
-- Uniquely identifies any row in the table
-## Candidate key:
-- Minimal "super key"; super key that without unnecessary attributes.
+### Super Key:
+- An attribute, or combination of attributes, that uniquely identifies each row in the table.
+### Candidate Key:
+- Minimal super key: a super key with no unnecessary attributes (removing any attribute would make it no longer unique).
 - Multiple can exist 
 - Called such because these are the keys from which the designer may pick the primary key.
-## Foreign Key:
-- Primaruy key of one table that has been placed into another table to create a common attribute.
+### Foreign Key:
+- Primary key of one table that has been placed into another table to create a common attribute.
+- **Referential Integrity:**
+	- The condition in which every reference to an entity instance by another entity instance is valid
+### Secondary Key:
+- Key used strictly for data retrieval purposes.
 ### Dependencies:
 - **Determination:**
 	- The state in which knowing the value of one attribute makes it possible to determine the value of another.
 	- **Ex:**
-		- If you have recorded attributes for PRODUCTION_COST and SALE_PRICE, then PRODUCTION COST - SALE_PRICE = profit. and PROFIT can be an attribute for profit.
+		- If you have recorded attributes for PRODUCTION_COST and SALE_PRICE, then SALE_PRICE − PRODUCTION_COST = PROFIT, so PROFIT is determined by those two attributes.
 - **Functional Dependency:**
 	- An attribute (usually a primary key) of an entity can be used to determine other attributes of that same entity.
 - **Partial Dependency:**
@@ -284,5 +290,61 @@ For this semester, we will be using the crow's foot notation.
 ### Conditions:
 1) All of the values in the primary key must be unique.
 2) No key attribute in the primary key can contain a null.
+	- **Null:** Absence of any data value.
 
+## Constraints:
+- Other integrity rules that can be enforced n the relational model at the NOT NULL and UNIQUE constraints
+- The NOT NULL constraint can be placed on a column to ensure that every row in the table has a value for that column.
+- UNIQUE constraint is a restriction placed on a column to ensure that no duplicate values that exist for that constraint 
 
+## Relational Algebra:
+- Theoretical way of manipulating table contents using relational operators.
+- **Relvar:**
+	- Variable that stores data about a relation.
+	- Composed of a heading + body:
+		- Heading contains the names of attributes.
+		- Body contains the relation.
+
+## Relational Set Operators:
+- Select(restrict):
+	- Getter; Unary operator; yields a horizontal subset of a table.
+- Project:
+	- Getter; Unary operator; yields a vertical subset of a table.
+- Union:
+	- Mutator; Combines all rows from two tables. Excludes duplicate rows.
+	- **Union Compatible**:
+		- Tables share the same number of columns, and their corresponding columns share compatible domains.
+- Intersect:
+	- Getter; Yields only the rows that appear in both tables.
+	- Tables must be union-compatible to yield valid results.
+- Difference;
+	- Yields all rows in one table that are not found in the other table.
+	- Tables must be union-compatible to yield valid results.
+- Product:
+	- Yields all possible pairs of rows from two tables.
+- Natural Join:
+	- Links tables by selecting only the rows with common values in their common attribute.
+- Equijoin:
+	- Links tables on the basis of an equality condition that compares specified columns of each table.
+- Theta join:
+	- Link tables using an inequality comparison operator.
+- Inner join;
+	- Only return matched records from the table that are being joined.
+- Outer join:
+	- Matched pairs are retained and unmatched values in the other tables are left null.
+	- Left outer join:
+		- Yields all of the rows in the first table, including those that do not have a matching value of in the second table.
+	- Right outer join:
+		- Yields all of the rows in the second, table, including those that do not have matching values in the first table.
+- Divide:
+	- Uses a doble-column table as the dividend and one single-column table as the divisor.
+	- Output is a single column that contains all values from the second column of the dividend that are associated with every row in the divisor.
+
+## Breaking M:M Relationships to Two 1:M Relationships:
+![[Pasted image 20261015102802.png]]
+
+## Indexes:
+- **Index Key:**
+	- Index's reference point that leads to data location identified by the key.
+- **Unique Index:**
+	- Index key can have only one pointer value associated with it.  

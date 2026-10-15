@@ -34,7 +34,8 @@
 5) Cloud Database:
 	- Data stored online for access over the web.
 6) General-purpose database: 
-	- contains data focused on specific subject areas.
+	- Contains a wide variety of data used in multiple disciplines.
+	- (Contrast: **Discipline-specific database**: contains data focused on specific subject areas.)
 7) Operational database:
 	- Designed to support a group's day-to-day operations.
 8) Analytical database:
