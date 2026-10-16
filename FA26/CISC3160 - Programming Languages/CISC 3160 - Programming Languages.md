@@ -169,7 +169,7 @@ $B \rightarrow \epsilon$
 `(display "Hello, World)`
 `(newline)`
 
-## ...
+## Scheme Notes
 - Literals are printed to terminal/console
 - Expressions are printed to terminal console
 - Comments are pre-fixed with `;
@@ -237,3 +237,15 @@ $B \rightarrow \epsilon$
 	- `(length L); L is a list`
 	- `(list '(1 3) '(2) '() '(3 0); ((1 3) (2) () (3 0))`
 	- `(append L1 L2 ...); takes 2+ araguments. Returns a new list composed of all the arguments appended togther.
+
+- Higher Order Procedures:
+	- A procedure that takes a procedure as input and/or returns a procedure.
+	- Built in Higher Order Procedures:
+		- map:
+			- (map \<procedure> L)
+			```
+			(define (my-map f L))
+				(if (null? L))
+					'()
+					(cons (f (car L)) (my-map f (cdr L)))))
+			```
