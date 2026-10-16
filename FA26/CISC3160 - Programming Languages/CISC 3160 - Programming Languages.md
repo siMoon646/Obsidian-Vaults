@@ -161,91 +161,137 @@ $B \rightarrow \epsilon$
 - Take source code and run it. (An interpreter may translate to a lower-level language or machine code)
 ### Example(s) Of Interpreted Language(s):
 - Python.
-# Chapter 5: 
-## The Big Scheme: 
-## File Extension:
-- `scm`
-## Hello World Program:
-`(display "Hello, World)`
-`(newline)`
+# Chapter 5: Scheme
+## Overview
+- Functional, dynamically typed dialect of Lisp.
+- Fully parenthesized **prefix** notation (S-expressions); code and data are both lists.
+- Run in a **REPL** (Read → Eval → Print → Loop). File extension: `.scm`
 
-## Scheme Notes
-- Literals are printed to terminal/console
-- Expressions are printed to terminal console
-- Comments are pre-fixed with `;
-- Scheme's "procedures" = Java's "functions"
-- Operators have values: 
-	- `+ ; #<procedure:+>`
-- Operators are not necessarily binary:
-	- `(+ 1 2 3) ; 6`
-- Procedures are applied (called) via:
-	- `( <procedure name> <arguments> )`
-- `(1 + 2 +3) * ( 4 - 5) + 6`
-- `(+ (* (+ 1 2 3) (- 4 5)) 6) ; 0`
-- Making variables:
-	- `(define pi 3.1415)`
-	- `pi ; 3.1415`
-- Identifier Rules In Scheme: 
-	- can contain '-', '?', '!', etc.
-- How to create own procedures with lambda:
-		- `(lambda (<arguments>) (<expression>))`
-	- `(lambda (x) (+ x 1))`
-		- this procedure has no name; anonymous procedure that takes an input and increments it.
-		- Give it name by:
-		- `(define sucessor`(lambda (x) (+ x 1))``
-- Special Forms; Not Procedures.
-	- `define`
-	- `lambda`
-	- `if`
-	- `cond`
-	- `quote`
-	- **Rule For Special Forms:**
-		- They do not need to fully evaluate before running.
-- Conditionals:
-	- **If Statements:**
-		- `(if (<condition>) (<true case>) (false case))`
-	- **Switch/Case:**
-		- `(cond
-		  `((<condition>) (<output>)
-		  `((<condition2>) (<output2)
-		  `(else (<default case>))`
-- Creating more interesting data:
-- Quotes:
-	- Returns the subsequent word as a "symbol" data type.
-		- `(quote a); a`
-		- `(+ 1 (quote a)); error`
-	- Syntactic Sugar:
-		- 'item' is treated as (quote item)
+## Hello World
+```scheme
+(display "Hello, World!")
+(newline)
+```
 
-| Pairs       |              |                                                     |
-| ----------- | ------------ | --------------------------------------------------- |
-| Operation   | Procedure    | Meaning                                             |
-| Create Pair | `(cons x y)` | constructs a pair of `x` and `y`                    |
-| Get First   | `(car p)`    | Contents of Address Register; left value of pair    |
-| Get Second  | `(cdr p)`    | Contents of Decrement Register; right value of pair |
+## Basics
+- Comments: `;` (to end of line)
+- Literals evaluate to themselves: `42 ; 42`, `"hi" ; "hi"`
+- Types: numbers (`42`, `3.14`, `1/3`), booleans (`#t`, `#f`), strings, symbols (`'a`), empty list (`'()`)
+- **Only `#f` is false**; `0` and `'()` are true.
 
-`(define p (cons 10 20)))` or `(define p `
-(10 . 20)`
+## Procedures
+- Procedures = Java's functions. Call: `(<procedure-name> <args...>)`
+- **Evaluation rule:** evaluate the operator and all arguments, then apply.
+- Operators are procedures with values: `+ ; #<procedure:+>`
+- Not necessarily binary: `(+ 1 2 3) ; 6`
+- Infix → prefix: `(1 + 2 + 3) * (4 - 5) + 6` → `(+ (* (+ 1 2 3) (- 4 5)) 6) ; 0`
+- Every `(` is a call: `((+ 1 2))` is an error (3 is not a procedure).
 
-(cons 1 2) -> creates a pair; (1 . 2)
-(cons 1 (cons 2 '())) -> creates a proper list; (1 2) 
-`p         ; (10 . 20)`
-`(car p)   ; 10`
-`(cdr p)   ; 20`
+## `define` & Identifiers
+```scheme
+(define pi 3.1415)
+pi   ; 3.1415
+```
+- Identifiers may contain `- ? ! * < > =` etc.
+- **Forbidden** in identifiers: whitespace, `( ) [ ] { }`, `" , ' ` ;` `|` `\`, and a leading `#`
+	- Can't look like a number: `123`, `+5`, `-2.5` are numbers, not names (but `+`, `-`, `...`, `1+` are valid names)
+	- A lone `.` is reserved (used in dotted pairs)
+- Conventions: `?` = predicate (`null?`), `!` = mutation (`set!`), `->` = conversion (`string->number`)
 
-- Scheme built-in procedures for lists:
-	- `(length L); L is a list`
-	- `(list '(1 3) '(2) '() '(3 0); ((1 3) (2) () (3 0))`
-	- `(append L1 L2 ...); takes 2+ araguments. Returns a new list composed of all the arguments appended togther.
+## `lambda`
+- `(lambda (<params>) <body>)` creates an anonymous procedure.
+```scheme
+((lambda (x) (+ x 1)) 5)                ; 6
+(define successor (lambda (x) (+ x 1))) ; give it a name
+(define (successor x) (+ x 1))          ; shorthand, same thing
+(successor 5)                           ; 6
+```
+- Procedures are **first-class**: they can be stored, passed and returned.
+- Local variables: `(let ((x 2) (y 3)) (* x y)) ; 6`
 
-- Higher Order Procedures:
-	- A procedure that takes a procedure as input and/or returns a procedure.
-	- Built in Higher Order Procedures:
-		- map:
-			- (map \<procedure> L)
-			```
-			(define (my-map f L))
-				(if (null? L))
-					'()
-					(cons (f (car L)) (my-map f (cdr L)))))
-			```
+## Special Forms
+- `define`, `lambda`, `if`, `cond`, `quote`, `let`, `and`, `or`
+- **Rule:** their arguments are **not** all evaluated before running. Each form decides what to evaluate.
+	- `define` doesn't evaluate the name; `lambda` doesn't evaluate the body until called; `quote` never evaluates.
+	- `(if #t 1 (/ 1 0)) ; 1`, since the else branch is never evaluated.
+
+## Conditionals
+```scheme
+(if <test> <then> <else>)
+(if (> 3 2) 'yes 'no)   ; yes
+
+(cond (<test1> <expr1>)
+      (<test2> <expr2>)
+      (else <default>))
+```
+- `cond` checks tests top to bottom and returns the first match.
+- Don't wrap a non-call test in parentheses: `(if (x) ...)` calls `x`.
+- Common tests: `= < >`, `null?`, `pair?`, `zero?`, `even?`, `equal?`, `and`, `or`, `not`
+
+## Quote & Symbols
+- `(quote a) ; a` returns the **symbol** `a`, unevaluated. Sugar: `'a`
+- `(+ 1 'a)` is an error.
+- `'(1 2 3)` is list data; `(1 2 3)` is an error (1 is not a procedure).
+
+## Pairs
+| Operation   | Procedure    | Meaning                                       |
+| ----------- | ------------ | --------------------------------------------- |
+| Create Pair | `(cons x y)` | constructs a pair of `x` and `y`              |
+| Get First   | `(car p)`    | Contents of Address Register: left value     |
+| Get Second  | `(cdr p)`    | Contents of Decrement Register: right value  |
+
+```scheme
+(define p (cons 10 20))   ; same as '(10 . 20)
+p         ; (10 . 20)
+(car p)   ; 10
+(cdr p)   ; 20
+```
+
+## Lists
+- A list is `'()` or a pair whose `cdr` is a list.
+```scheme
+(cons 1 2)              ; (1 . 2), a pair (not a proper list)
+(cons 1 (cons 2 '()))   ; (1 2), a proper list
+```
+- On a list, `car` = first element, `cdr` = rest. `(cadr L)` = `(car (cdr L))`
+
+| Procedure            | Example                                      |
+| -------------------- | -------------------------------------------- |
+| `(list a b ...)`     | `(list '(1 3) '(2) '()) ; ((1 3) (2) ())`    |
+| `(length L)`         | `(length '(1 (2 3) 4)) ; 3`                  |
+| `(append L1 L2 ...)` | `(append '(1 2) '(3)) ; (1 2 3)`             |
+| `(reverse L)`        | `(reverse '(1 2 3)) ; (3 2 1)`               |
+| `(null? L)`          | `(null? '()) ; #t`                           |
+
+> [!tip] `cons` vs `list` vs `append`
+> ```scheme
+> (cons   '(1 2) '(3 4))   ; ((1 2) 3 4)
+> (list   '(1 2) '(3 4))   ; ((1 2) (3 4))
+> (append '(1 2) '(3 4))   ; (1 2 3 4)
+> ```
+
+## Recursion on Lists
+- Pattern: **base case** `(null? L)`, then **recursive case**: use `(car L)`, recurse on `(cdr L)`.
+```scheme
+(define (sum L)
+  (if (null? L)
+      0
+      (+ (car L) (sum (cdr L)))))
+(sum '(1 2 3))   ; (+ 1 (+ 2 (+ 3 0))) = 6
+```
+
+## Higher-Order Procedures
+- Take a procedure as input and/or return one.
+- `(map <procedure> L)` applies the procedure to each element: `(map successor '(1 2 3)) ; (2 3 4)`
+- `(apply + '(1 2 3)) ; 6`
+- `(filter even? '(1 2 3 4)) ; (2 4)` (Racket / SRFI-1)
+```scheme
+(define (my-map f L)
+  (if (null? L)
+      '()
+      (cons (f (car L)) (my-map f (cdr L)))))
+
+(define (make-adder n)       ; returns a procedure (a closure)
+  (lambda (x) (+ x n)))
+((make-adder 5) 10)          ; 15
+```
