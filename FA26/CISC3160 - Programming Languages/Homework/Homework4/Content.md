@@ -180,7 +180,7 @@ Assume the following definitions:
 4. Define the following simple procedures in Scheme.
 	- (my-abs x): returns the absolute value of number x. (Here, don’t use the built-in (abs x) procedure, which my-abs mimics.)
 	- (signum x): returns -1 if x is negative, 1 if x is positive, 0 otherwise. Assume x is a number.
-	- Define a procedure (square x) that returns x2. Then define a procedure (sum-of-squares x y) that returns x2 + y2 using the (square x) procedure you just defined. Then define a procedure that takes three numbers as arguments and returns the sum of the squares of the two larger numbers using the (sum-of-squares x y) procedure. Tip: experiment to determine the behavior of the <= procedure when it is passed more than two numbers as arguments; for example, what does (<= 4 6 11) evaluate to?
+	- Define a procedure (square x) that returns x2. Then define a procedure (sum-of-squares x y) that returns $x^2$ + $y^2$ using the (square x) procedure you just defined. Then define a procedure that takes three numbers as arguments and returns the sum of the squares of the two larger numbers using the (sum-of-squares x y) procedure. Tip: experiment to determine the behavior of the <= procedure when it is passed more than two numbers as arguments; for example, what does (<= 4 6 11) evaluate to?
 - (my-abs x):
 ``` scheme
 (define (my-abs x) ((if (> x 0) + -) 0 x))
