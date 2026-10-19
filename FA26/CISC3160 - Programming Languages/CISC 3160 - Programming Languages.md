@@ -295,3 +295,34 @@ p         ; (10 . 20)
   (lambda (x) (+ x n)))
 ((make-adder 5) 10)          ; 15
 ```
+### Predicates:
+- Tests a value for an answer and returns a Boolean if it passes the test:
+- **Types Of Predicates:**
+	- `null?`
+	- `even?`
+	- Procedure name usually ends with `?`.
+
+#### Example(s):
+``` scheme
+(define (filter predicate L)
+	(cond
+	((null? L) '())
+	((predicate (car L)) (cons (car L) (filter predicate (cdr L))))
+	(else (filter predicate (cdr L)))))
+
+; type: (A, A -> A), A, List<A> -> A
+(define (reduce f init L)
+	(if (null? L)
+	init
+	(f (car L) (reduce f init (cdr L)))))
+```
+
+### Many Arg Procedure:
+``` scheme
+; args: list 
+; might be broken...
+(define (add-many . args)
+	(if null? args)
+		0
+		(+ (car args) (add-many (cdr args)))))
+```
