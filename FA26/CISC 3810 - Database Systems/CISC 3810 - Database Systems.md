@@ -1,4 +1,4 @@
-2# Chapter 1:
+# Chapter 1:
 ## Importance of Databases:
 - Lots of data in real world that needs organizing.
 - Relationships between data for inferring modern needs.
@@ -260,7 +260,7 @@ For this semester, we will be using the crow's foot notation.
 - Represents a data value about an entity.
 ## Keys:
 ### Primary Key:
-- Attribute, or set of attributes, that uniquely identifies each row in a table
+- Attribute, or MINIMAL set of attributes, that uniquely identifies each row in a table.
 ### Super Key:
 - An attribute, or combination of attributes, that uniquely identifies each row in the table.
 ### Candidate Key:
@@ -284,7 +284,6 @@ For this semester, we will be using the crow's foot notation.
 	- When an attribute depends on only _part_ of a composite primary key instead of the whole key.
 - **Full Functional Dependency:**
 	- Refer to functional dependencies in which the entire collection of attributes in the determinant is necessary for the relationship.
-
 ## Entity Integrity:
 - Condition in which each row (entity instance) in the table has its own unique identity.
 ### Conditions:
@@ -348,3 +347,36 @@ For this semester, we will be using the crow's foot notation.
 	- Index's reference point that leads to data location identified by the key.
 - **Unique Index:**
 	- Index key can have only one pointer value associated with it.  
+
+# Chapter 4: Entity Relationship Modeling:
+## Components:
+1) Entities
+	- End user's object of interest
+	- The set of objects
+	- **Characteristics**:
+		- **Required Attribute**: Must-have value; no null
+		- **Optional Attribute**: Null allowed
+		- **Domain**: set of possible values for an attribute
+		- **Identifier**: One or more attributes that uniquely identify each entity instance. *Identifiers in ERDs are underlined*.
+		- **Composite Identifier**: Primary key composed of more than one attribute.
+		- **Composite Attribute**: Attribute that can be divided to get additional attributes.
+		- **Simple Attribute**: Indivisible attribute.
+		- **Single-Value Attribute**: Attribute with only a single value.
+		- **Multivalued Attributes**: Attributes that have many values.
+			- Requires creation of several new attributes, one for each component of the original multivalued attribute.
+			- Develop a new entity composed of the original multivalued attribute's components.
+2) Attributes
+3) Relationships
+## Modeling Conventions: 
+- Entity name, is written in all upper-case
+## Relationships, Connectivity, Cardinality
+- **Relationships**
+	- is an association between entities that always participate in both directions.
+	- entities are participants on relationships
+- **Connectivity**
+	- Describes the relationship classification
+- **Cardinality**
+	- Expresses the minimum and the maximum number of entity occurrences associated with one occurrence of related entity.
+	- In ERD, cardinality is indicated by placing the appropriate numbers beside the entities, using the format (x,y)
+	- 
+

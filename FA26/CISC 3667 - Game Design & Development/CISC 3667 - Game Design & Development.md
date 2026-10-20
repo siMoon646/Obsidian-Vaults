@@ -95,3 +95,43 @@ $P(\text{ sequence contains } 1) = 671/1296 \approx 0.5 \text{ or } 50\%$
 - Not only do our brains actively seek patterns, but they also actively and desperately seek cause-and-effect relationships.
 # <hr>
 
+# Meeting 9?
+- **Textual Scripting**
+	- Coding textually; conventional.
+- **Node Scripting**
+	- Coding with node/blocks; abstract.
+## Introduction To Unity
+- Unity is a cross-platform game engine used to make 2d and 3d games and interactive applications.
+
+### Components:
+**Scenes**:
+- Represents a part of a game. Contains the GameObjects that make up a level, menu, or other game environment.
+**GameObjects**:
+- Fundamental object in a Unity scene. Players, enemies, collectibles, etc.
+**Components**:
+- Data or functionality to a GameObject can contain multiple components that work together to produce its behavior.
+- **Types**:
+
+| Component       | Purpose                                                       |
+| --------------- | ------------------------------------------------------------- |
+| Transform       | Stores the object's position, rotation, and scale             |
+| Sprite Renderer | Display a 2d image represeting the object.                    |
+| RigidBody2D     | Allows the object to participate in Unity's 2D physics system |
+| Collider2D      | Defines a shape used for collision detection or triggers      |
+| PlayerMovement  | A custom C# scrip that control player movement                |
+
+**Sprites**:
+- Two-dimensional graphic used to represent an object.
+**Prefab**:
+- Reusable game object; template; stores an object's components and configuration.
+- Allows devs to create multiple instances without rebuilding the object each time.
+
+### Unity Script Lifecycle:
+- Unity automatically calls certain methods on active monobehavior components at particular points during execution
+
+## C\# Programming
+- Similar syntax to TypeScript.
+- ***C-family language***
+
+
+
