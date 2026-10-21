@@ -317,7 +317,7 @@ p         ; (10 . 20)
 	(f (car L) (reduce f init (cdr L)))))
 ```
 
-### Many Arg Procedure:
+## Many Arg Procedure:
 ``` scheme
 ; args: list 
 ; might be broken...
@@ -326,3 +326,47 @@ p         ; (10 . 20)
 		0
 		(+ (car args) (add-many (cdr args)))))
 ```
+
+## `let`, `let*`, `letrec`:
+- **Let**
+	- Declares scope-local variable
+``` scheme
+(let ((a 1) (b 2) (c 3))
+	(+ a (* b c))) ; 7
+	
+a ; error
+```
+- `let*`
+	- Allows later bindings to depend on earlier ones
+	- Binding done at runtime in sequence from left to right.
+- `letrec`
+	- Allows bindings to depend on themselves
+	- Allows earlier bindings to depend on later ones
+	- Useful for mutually recursive procedures
+```
+	
+```
+# Chapter 6: 
+## Scope:
+- Nesting `let` expressions $\rightarrow$ creates nested scopes.
+### Lexical Scope
+- Variable's meaning is determined by where it is written in the source code. 
+- Lexical Scope:
+``` scheme
+(define b 10)
+(define (show) b)
+(define (call-show b) (show))
+(call-show 20) ; 10
+```
+- Scheme uses lexical scope.
+
+### Dynamic Scope
+- Variable's meaning is determined by the active function call.
+- Dynamic Scope:
+``` scheme
+(define b 10)
+(define (show) b)
+(define (call-show b) (show))
+(call-show 20) ; 20
+```
+- Uses latest binding of `b`
