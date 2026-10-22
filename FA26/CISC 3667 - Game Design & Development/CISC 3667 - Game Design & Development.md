@@ -133,5 +133,77 @@ $P(\text{ sequence contains } 1) = 671/1296 \approx 0.5 \text{ or } 50\%$
 - Similar syntax to TypeScript.
 - ***C-family language***
 
+# Meeting 10: Unity
+`PlayerMovement.cs`:
+``` CS
+using UnityEngine;
+using UnityEngine.InputSystem;
 
+public class PlayerMovement : MonoBehavior {
+	[SerializeField] private float speed = 5f;
 
+	[SerializeField] private float leftBoundary = -5f;
+	[SerializeField] private float rightBoundary = 5f;
+	// update is called once per frame:
+	void Update(){
+		// avoid error if no keyboard available
+		if(Keyboard.current == null) return;
+		float direction = 0f; // no movement
+		
+		if(Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.ispressed) {
+		direction = -1f;
+		}
+		if(Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.ispressed) {
+		direction = 1f;
+		}
+		
+		// start with the player's current position
+		Vector3 position = transform.position;
+		
+		// move horizontally (w/ deltaTime for hardware-variation movement consistency)
+		position.x += direction * speed * Time.deltaTime;
+		
+		// keep player between boundaries (left and right)
+		position.x = Math.Clamp(position.x, leftBoundary, rightBoundary);
+		
+		transform.position = position;
+	}
+}
+```
+
+`BalloonMovement.cs`
+``` CS
+using UnityEngine;
+
+public class BalloonMovement : MonoBehavior {
+
+	[SerializeField] private float speed = 7f;
+	[SerializeField] private float leftBoundary = -9f;
+	[SerializeField] private float rightBoundary = 9f;
+	
+	// hardcoded so that balloons start with moving to the right
+	private bool movingRight = true;
+	
+
+	void update() {
+		// convert boolean state into a direction
+		float direction = movingRight ? 1f : -1f;
+		
+		// current position:
+		Vector3 position = transform.position;
+		
+		position.x = direction * speed * Time.deltaTime;
+		
+		if(position.x >= rightBoundary) {
+			position.x = rightBoundary;
+			movingRight = false;
+		} else if (position.x <= leftBoundary) {
+			position.x = leftBoundary;
+			movingRight = true;
+		}
+	}
+}
+```
+
+## Prefab Asset:
+- different from regular game objects in that we can re-use it in various scenes -> basically a premade game object(?).
