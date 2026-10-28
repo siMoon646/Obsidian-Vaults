@@ -370,3 +370,52 @@ a ; error
 (call-show 20) ; 20
 ```
 - Uses latest binding of `b`
+
+## Using `set!`
+``` scheme
+(define make-counter
+	(lambda (n)
+		(lambda () (set! n (+ n 1))
+			n)))
+```
+
+## New Model Of Mutation For Closures
+- **Environment Model:**
+	- Precise, mechanical description of what a procedure does:
+	- Parts:
+		- name-rule
+			- A name _X_ evaluated in environment _E_ gives: value of _X_ in the first frame of _E_ where _X_ is bound. 
+		- define-tule
+			- A define special form evaluated in environment _E_. Creates or replaces a binding the first frame of _E_
+		- set!-rule
+			- A set! of variable _X_ in environment _E_
+			- Changes the binding of _X_ in the first frame of _E_ where x is bound.
+		- lambda-rule
+			- Special form evaluated in environment _E_.
+			- Creates a procedure whose environment pointer is _E_.
+		- application
+			- 
+- **Binding:**
+	- A pairing of a name and a value.
+- **Environment:**
+	- Sequence of frames.
+	- **Frame:**
+		- Contains variables
+		- Can be shared between environments.
+	- **Current Environment:**
+		- Changes when the application runs a procedure.
+	- **Global Environment:**
+		- Top environment
+		- Doesn't have an **enclosing environment**
+	- **Enclosing Environment:**
+		- for a frame _F_, the environment that _F_ points to. It’s the sequence of frames searched for a variable’s binding when _F_ has no binding for that variable. When _F_ is created by applying a procedure, its enclosing environment is the environment in which that procedure was created.
+- **Combination:**
+	- Procedure application
+	- Example: Each of p, x1, x2, etc. Are evaluated, and the result of p is applied to the results of x1, x2, etc.
+
+- Let (special form):
+
+
+
+
+
