@@ -418,5 +418,23 @@
 - **Connectivity:** describes the relationship classification: **1:1**, **1:M**, or **M:N**.
 - **Cardinality:** the **minimum** and **maximum** number of entity occurrences associated with one occurrence of the related entity.
 	- In an ERD, cardinality is shown by placing numbers beside the entities in the format **(x, y)**: x = minimum, y = maximum.
-	- *Example: in PROFESSOR teaches CLASS, writing (1,4) next to CLASS means each professor teaches at least 1 and at most 4 classes.*
+	- Example:
+		![[Pasted image 20261029095211.png]]
 	- Cardinalities are usually set by **business rules**.
+- **Existence-Dependent**:
+	- Can apply independently to an occurrence of an entity
+	- Exist in the database only when it is associated with another related entity occurrence.
+	- **Example:**
+		- In “EMPLOYEE claims DEPENDENT,” DEPENDENT is existence-dependent on EMPLOYEE. A dependent can’t exist in the database without the employee who claims it for tax-withholding purposes.
+- **Existence-Independence** (Strong entity):
+	- Can exist apart from all of its related entities
+
+### Relationship Strength:
+- Strength is based on how the primary key of a related entity is defined.
+-  Sometimes, the foreign key also is a pimary key component in the related entity.
+
+
+|                  | Weak (non-identifying)                                                       | Strong (identifying)                            |
+| ---------------- | ---------------------------------------------------------------------------- | ----------------------------------------------- |
+| Child's PK       | Does not contain the parents' PK, parent's PK appears only as a foreign key. | Contains the parent's PK as part of its own PK. |
+| Crow's Foot Line | Dashed                                                                       | Solid                                           |
