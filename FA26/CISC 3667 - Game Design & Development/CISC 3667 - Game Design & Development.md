@@ -134,6 +134,8 @@ $P(\text{ sequence contains } 1) = 671/1296 \approx 0.5 \text{ or } 50\%$
 - ***C-family language***
 
 # Meeting 10: Unity
+
+Follow instructions on doc + 16:10 aspect ratio for game.
 `PlayerMovement.cs`:
 ``` CS
 using UnityEngine;
@@ -207,3 +209,177 @@ public class BalloonMovement : MonoBehavior {
 
 ## Prefab Asset:
 - different from regular game objects in that we can re-use it in various scenes -> basically a premade game object(?).
+
+Customize Pin gameobject to have tag "Pin" and give it 2DRigidbody + box collider 2d w/ is trigger
+`PinMovement.cs`:
+``` cs
+using UnityEngine;
+
+public class PinMovement : MonoBehavior {
+	[SerializeField] private float speed = 8f;
+	// boundary for which to destroy the pin:
+	[SeriealizeField] private float destroyY = 6f;
+	
+	void update() {
+		transform.position += Vector3.up * speed * Time.deltaTime;
+	}
+	
+	// check if the pin has reached destroy boundary
+	if(transform.position.y > destroyY) {
+		Destroy(gameObject); // game object = game object this file is attached to.
+	}
+}
+```
+Add above script to the Pin prefab.
+
+`PlayerShoot.cs`:
+``` cs
+using UnityEngine;
+
+public clsas PlayerShoot : MonoBehavior{
+	
+	// need to know what gameobject to spawn as projectile
+	[SerializeField] private GameObject pinPrefab;
+	// need to know where the spawn the pin from
+	[SerializeField] private Vector3 launchOffset = new Vector(0f, 0.6f, 0f);
+	
+	void update(){
+	
+		if (keyboard.current == null) {
+			return;
+		}
+		// if space is pressed first
+		if(Keyboard.current.spaceKey.wasPressedThisFrame){
+			// avoid trying to create an object if no prefab is available
+			if(pinPrefab != null){
+				Instantiate(
+					pinPrefab, 
+					transform.position + launchOffset, 
+					Quaternion.identity
+				);
+			}
+		} else {
+			Debug.Logwarning("Assign Pin prefab in Inspector panel.");
+		}
+	}
+}
+```
+Attach the above script to player GameObject + attach the pin prefab to the component in the player game object. Enable Is Trigger
+
+Attach Circle Collider 2d Component to the balloon GameObject + adjust component.
+
+`BalloonHit.cs`:
+``` cs
+using System.Collections; // idk
+using Unity Engine; // Unity library
+using UnityEngine.SceneManagement; // Unity library for helping keep track of score
+
+public class BalloonHit : MonoBehavior {
+	// score manager
+	[SeralizeField] private ScoreManager scoreManager;
+	
+	// audio source for balloon popping
+	[SerializeField] private AudioSource popAudio;
+	
+	// how long the baloon stays hidden after being hit
+	[SerializeField] private float respawnDelay = 0.25f;
+	
+	// stop multiple pins from scoring during one pop
+	private bool alreadyPopped;
+	
+	private Collider2D balloonCollider;
+	
+	private SpriteRenderer balloonRenderer;
+	
+	void Awake(){
+		balloonCollider = GetComponent<Collider2D>();
+		balloonRenderer = GetComponent<SpriteRenderer>();	
+	}
+	
+	void OnTriggerEnter2D(Collider2D other){
+		// ignore collisions that are not with the pin
+		if(!other.CompareTag("Pin" || alreadyPopped) {
+			return;
+		}
+		// by this line, the hit should award a point
+		if(scoreManager != null){ // make sure that the score manager exists first
+			scoreManager.AddPoint();
+		}
+		if(popAudio != null){
+			popAudio.Play();
+		}
+		// destroy the pin if it collided with the balloon
+		Destroy(other.GameObject);
+		
+		// hide balloon, wait, restore
+		StartCoroutine(PopAndRespawn()); 
+	}
+	
+	IEnumerator PopAndRespawn(){
+		// turn off collider (prevent duplicate hits)
+		if (balloonCollider != null){
+			balloonCollider.enabled = false;
+		}
+		
+		if(balloonRenderer != null){
+			balloonRenderer.enabled = false;
+		}
+		
+		yield return new WaitForSecond(respawnDelay);
+	
+		// restore sprite and collision for next shot
+		if (balloonRenderer != null) {
+			balloonRenderer.enabled = true;
+		}
+		
+		if (balloonCollider != null) {
+			balloonRenderer.enabled = true;
+		}
+		alreadyPopped = false;
+	}
+}
+```
+
+Add a canvas game object, nest a text field in it
+
+Make an empty object
+
+`ScoreManager.cs`:
+``` cs
+using TMPro;
+using UnityEngine;
+
+public class ScoreManager : MonoBehavior {
+
+	[SerializeField] private TEMP_Text ScoreText;
+	
+	// score for current play session
+	private int score = 0;
+	
+	void Start() {
+		UpdateScoreDisplay();	
+	}
+	
+	public void AddPoint(){
+		score++;
+		UpdateScoreDisplay();
+	}
+	
+	public void ResetScore(){
+		score = 0;
+		updateScoreDisplay();
+	}
+	
+	void updateScoreDisplay(){
+		if(scoreText != null){
+			scoreText.text = "Score : " + score;
+		}
+	}
+	
+	void Update() {
+	
+	}
+	
+}
+
+```

@@ -431,7 +431,7 @@
 
 ### Relationship Strength:
 - Strength is based on how the primary key of a related entity is defined.
--  Sometimes, the foreign key also is a pimary key component in the related entity.
+-  Sometimes, the foreign key also is a primary key component in the related entity.
 
 
 |                  | Weak (non-identifying)                                                       | Strong (identifying)                            |
