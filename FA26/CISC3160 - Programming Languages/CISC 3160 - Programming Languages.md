@@ -415,7 +415,111 @@ a ; error
 
 - Let (special form):
 
+# Chapter 7: ML and Haskell
+## ML (Metalanguage):
+- Statically typed; type safe
+- Support for functional and imperative. 
+- Lisp family
 
+### Primitives:
+- int ; integer
+- real ; double/float
+- bool ; boolean
+- char ; characters
+- string ; strings
 
+### Operators:
+- **Math**
+	- `/` operator : defined for `real`s ; division of floating point numbers.
+	- `div` : defined for `int`s ; integer division.
+		- drops decimal part of quotient.
+	- `~` : negation
+	- `=` : defined for `int`s ; equality operator
+	- `+` : addition
+	- `Real.==(x,y)` defined for `real`s ; equality operator 
+- **Boolean**
+	- `orelse` ; or operator
+	- `andalso` ; and operator
+	- `not` ; negation for booleans
+#### Note:
+- Operators used infix notation.
+### Comments:
+- Delimited with `(*` and `*)`
+### Conditionals:
+``` sml
+of 1 <> 2 then (1+2) else 20; (* Output: 3 *)
+```
+### Functions:
+- `explode` - function ; string -> char list
+- `implode` - function ; char list -> string
+#### Declaring Functions:
+``` sml
+fun f(x) = x + 1; (* function ; int -> int*)
+```
+#### Calling Functions:
+``` sml
+f(10); (* Output: 11 *)
+```
 
+## Haskell:
+- Primarily Functional
+- Statically Scoped
+- Lazy Evaluation
+### Primitive Types:
+- Bool
+- Char
+- String ; Alias for `[Char]`
+- Int (fixed precision, 32-bit)
+- Float
+### Operators:
+- Infix Notation
+- **List Operations:**
+	- `:` -> `cons` in scheme
+		- `1 : [2, 3]` -- : is Haskell's cons operator
+		- right associative
+	- `++` -> `append` in scheme
+- **Mathematics:**
+	- `/` : division
+	- `-` : negation
+- **Comparison:**
+	- `==`
+	- `<`
+	- `>`
+	- `<=`
+	- `>=`
+- **Boolean:**
+	- ||
+	- &&
+- Conditionals:
+	- if
+	- then
+	- else
+### Type Classes and Inheritance:
 
+| Java    | Interface<br>(Comparable) | Class<br>(Integer) |
+| ------- | ------------------------- | ------------------ |
+| Haskell | Type Class<br>(Ord)       | type<br>(Integer)  |
+### Haskell Type Class Inheritance Hierarchy:
+(find on brightspace)
+### Comments:
+- `-- stuff`
+### Functions:
+- All functions in Haskell are automatically currying.
+#### Built in Functions:
+- `div x y` : performs integer division between x and y.
+#### Currying:
+
+#### Calling Functions:
+- `.` operator for function composition -> function chaining
+- functions can be called by just writing their name and then chaining it with expected params
+### Bindings:
+``` haskell
+x = 1 + 2
+x -- 3
+t x -- Num a => a
+square x = x * x
+square -- error ; not apart of the show typeclass
+square 4.0 -- 16.0
+-- below is a function.
+sumOfSquares x y = square x + square y
+```
