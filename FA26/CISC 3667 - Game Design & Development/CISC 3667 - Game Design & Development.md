@@ -375,11 +375,6 @@ public class ScoreManager : MonoBehavior {
 			scoreText.text = "Score : " + score;
 		}
 	}
-	
-	void Update() {
-	
-	}
-	
 }
 
 ```
