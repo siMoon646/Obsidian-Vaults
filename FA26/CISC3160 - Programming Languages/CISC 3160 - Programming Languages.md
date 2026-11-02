@@ -416,110 +416,126 @@ a ; error
 - Let (special form):
 
 # Chapter 7: ML and Haskell
-## ML (Metalanguage):
-- Statically typed; type safe
-- Support for functional and imperative. 
-- Lisp family
+## Overview
+- Both are functional and **statically typed with type inference**: types are checked at compile time like C/Java, but you rarely write them (think `auto` everywhere).
+- Everything is an **expression**: `if` returns a value, like C's `?:`.
+- **ML:** eager evaluation (like C); allows mutation through `ref`. Dialects: SML, OCaml, F#.
+- **Haskell:** **lazy** (evaluates only when needed) and **pure** (side effects only inside `IO`). REPL: `ghci`.
 
-### Primitives:
-- int ; integer
-- real ; double/float
-- bool ; boolean
-- char ; characters
-- string ; strings
+## Syntax Comparison
+| Concept           | C / Java               | ML                     | Haskell                  |
+| ----------------- | ---------------------- | ---------------------- | ------------------------ |
+| Comment           | `//`, `/* */`          | `(* *)`                | `--`, `{- -}`            |
+| Not equal         | `!=`                   | `<>`                   | `/=`                     |
+| Negative number   | `-5`                   | `~5`                   | `-5`, as arg `(-5)`      |
+| Int division      | `7 / 2`                | `7 div 2`              | ``div 7 2`` / ``7 `div` 2`` |
+| Float division    | `7.0 / 2`              | `7.0 / 2.0`            | `7 / 2`                  |
+| Modulo            | `%`                    | `mod`                  | `mod`                    |
+| And / Or / Not    | `&&` `\|\|` `!`        | `andalso` `orelse` `not` | `&&` `\|\|` `not`      |
+| String concat     | `+` (Java)             | `^`                    | `++`                     |
+| Cons (prepend)    | —                      | `1 :: [2,3]`           | `1 : [2,3]`              |
+| Append lists      | —                      | `[1] @ [2]`            | `[1] ++ [2]`             |
+| Conditional       | `c ? a : b`            | `if c then a else b`   | `if c then a else b`     |
+| Lambda            | `x -> x + 1` (Java)    | `fn x => x + 1`        | `\x -> x + 1`            |
+| Define function   | `int f(int x) {...}`   | `fun f x = x + 1`      | `f x = x + 1`            |
+| Call function     | `f(1, 2)`              | `f(1, 2)` (tuple)      | `f 1 2`                  |
 
-### Operators:
-- **Math**
-	- `/` operator : defined for `real`s ; division of floating point numbers.
-	- `div` : defined for `int`s ; integer division.
-		- drops decimal part of quotient.
-	- `~` : negation
-	- `=` : defined for `int`s ; equality operator
-	- `+` : addition
-	- `Real.==(x,y)` defined for `real`s ; equality operator 
-- **Boolean**
-	- `orelse` ; or operator
-	- `andalso` ; and operator
-	- `not` ; negation for booleans
-#### Note:
-- Operators used infix notation.
-### Comments:
-- Delimited with `(*` and `*)`
-### Conditionals:
-``` sml
-of 1 <> 2 then (1+2) else 20; (* Output: 3 *)
+- `else` is always required, and both branches must have the same type.
+
+## ML
+### Types
+- `int`, `real` (double), `bool`, `char` (`#"a"`), `string`, `unit` (≈ `void`, value `()`)
+- **No implicit int ↔ real conversion** (unlike C): `1 + 2.0` is a type error.
+	- `real(3)` → `3.0`; `floor`, `round`, `trunc` go real → int.
+- `=` doesn't work on `real`; use `Real.==(x, y)`.
+- **Tuple:** fixed size, mixed types: `(1, "a") : int * string`; `#1 (1, "a")` → `1`
+- **List:** same type: `[1, 2, 3] : int list`; `hd`, `tl`, `null` = Scheme's `car`, `cdr`, `null?`
+
+### Bindings & Functions
+```sml
+val x = 5;                      (* val x = 5 : int  (immutable, like const) *)
+fun f(x) = x + 1;               (* int -> int *)
+f 10;                           (* 11 ; parens optional for one arg *)
+fun add(x, y) = x + y;          (* int * int -> int ; one tuple argument *)
+(fn x => x * 2) 5;              (* 10 *)
+
+fun length([]) = 0              (* pattern matching instead of if/switch *)
+  | length(x :: xs) = 1 + length(xs);   (* 'a list -> int *)
+
+let val a = 1 val b = 2 in a + b end;   (* local vars: 3 *)
 ```
-### Functions:
-- `explode` - function ; string -> char list
-- `implode` - function ; char list -> string
-#### Declaring Functions:
-``` sml
-fun f(x) = x + 1; (* function ; int -> int*)
+- `'a` is a type variable, like a Java generic `<T>`.
+- Built-ins: `explode` (string → char list), `implode` (char list → string), `size`, `map`, `foldl`, `foldr`
+
+## Haskell
+### Types
+- `Bool`, `Char`, `String` (= `[Char]`), `Float`, `Double`
+- `Int`: bounded like C's `long` (usually 64-bit); `Integer`: unbounded (BigInteger)
+
+### Syntax Notes
+- Function call is just a space: `f x y`. It binds tighter than any operator: `square 3 + 1` = `10`.
+- `f $ g x` = `f (g x)` (saves parentheses).
+- Operator as a function: `(+) 1 2`; function as an operator: ``7 `div` 2``.
+- Lists: `head`, `tail`, `null`, `!!` (index: `[10,20] !! 1` → `20`)
+- Laziness allows infinite lists: `take 3 [1..]` → `[1, 2, 3]`
+
+### Bindings & Functions
+```haskell
+x = 1 + 2
+:t x                     -- x :: Num a => a   (:t shows a type in ghci)
+square x = x * x
+square                   -- error: functions aren't in Show, so they can't be printed
+square 4.0               -- 16.0
+sumOfSquares x y = square x + square y
+
+square :: Num a => a -> a    -- optional signature; "Num a =>" = a must be a Num (like <T extends Num>)
+
+sign x                   -- guards: like an if / else-if chain
+  | x > 0     = 1
+  | x < 0     = -1
+  | otherwise = 0
+
+len []     = 0           -- pattern matching
+len (x:xs) = 1 + len xs
+
+g x = y + 1 where y = x * 2   -- local definition (also: let ... in ...)
 ```
-#### Calling Functions:
-``` sml
-f(10); (* Output: 11 *)
+- Built-ins: `div`, `mod`, `map`, `filter`, `foldr`, `foldl`, `length`, `reverse`, `take`, `drop`, `zip`, `sum`
+
+### Currying
+- Every function takes **exactly one** argument. `add x y` is a function that returns a function.
+	- `a -> a -> a` means `a -> (a -> a)`.
+- **Partial application:** pass fewer arguments to get a new function.
+```haskell
+add x y = x + y
+add3 = add 3             -- add3 10 = 13
+map (add 1) [1, 2, 3]    -- [2, 3, 4]
+map (*2) [1, 2, 3]       -- [2, 4, 6]  "section": partially applied operator
+```
+- ML functions taking a tuple (`fun add(x, y)`) are **not** curried; `fun add x y` is.
+
+### Function Composition
+- `(f . g) x` = `f (g x)`: apply `g`, then `f`.
+```haskell
+(square . (+1)) 2        -- 9
 ```
 
-## Haskell:
-- Primarily Functional
-- Statically Scoped
-- Lazy Evaluation
-### Primitive Types:
-- Bool
-- Char
-- String ; Alias for `[Char]`
-- Int (fixed precision, 32-bit)
-- Float
-### Operators:
-- Infix Notation
-- **List Operations:**
-	- `:` -> `cons` in scheme
-		- `1 : [2, 3]` -- : is Haskell's cons operator
-		- right associative
-	- `++` -> `append` in scheme
-- **Mathematics:**
-	- `/` : division
-	- `-` : negation
-- **Comparison:**
-	- `==`
-	- `<`
-	- `>`
-	- `<=`
-	- `>=`
-- **Boolean:**
-	- ||
-	- &&
-- Conditionals:
-	- if
-	- then
-	- else
-### Type Classes and Inheritance:
-
+### Type Classes
 | Java    | Interface<br>(Comparable) | Class<br>(Integer) |
 | ------- | ------------------------- | ------------------ |
 | Haskell | Type Class<br>(Ord)       | type<br>(Integer)  |
-### Haskell Type Class Inheritance Hierarchy:
-(find on brightspace)
-### Comments:
-- `-- stuff`
-### Functions:
-- All functions in Haskell are automatically currying.
-#### Built in Functions:
-- `div x y` : performs integer division between x and y.
-#### Currying:
 
-#### Calling Functions:
-- `.` operator for function composition -> function chaining
-- functions can be called by just writing their name and then chaining it with expected params
-### Bindings:
-``` haskell
-x = 1 + 2
-x -- 3
-t x -- Num a => a
-square x = x * x
-square -- error ; not apart of the show typeclass
-square 4.0 -- 16.0
--- below is a function.
-sumOfSquares x y = square x + square y
-```
+| Class        | Provides                        | Example instances    |
+| ------------ | ------------------------------- | -------------------- |
+| `Eq`         | `==`, `/=`                      | most types           |
+| `Ord`        | `<`, `>`, `compare`, `max`      | `Int`, `Char`        |
+| `Show`       | `show` (≈ `toString()`)         | most non-functions   |
+| `Num`        | `+`, `-`, `*`, `abs`            | `Int`, `Double`      |
+| `Integral`   | `div`, `mod`                    | `Int`, `Integer`     |
+| `Fractional` | `/`                             | `Float`, `Double`    |
+
+**Hierarchy** (subclass requires superclass, like `interface Ord extends Eq`; full diagram on Brightspace):
+- `Eq` → `Ord`
+- `Num` → `Real` (+ `Ord`) → `Integral`
+- `Num` → `Fractional` → `Floating`
+- `Real` + `Fractional` → `RealFrac`
