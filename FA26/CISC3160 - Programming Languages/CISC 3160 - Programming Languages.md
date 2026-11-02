@@ -423,22 +423,22 @@ a ; error
 - **Haskell:** **lazy** (evaluates only when needed) and **pure** (side effects only inside `IO`). REPL: `ghci`.
 
 ## Syntax Comparison
-| Concept           | C / Java               | ML                     | Haskell                  |
-| ----------------- | ---------------------- | ---------------------- | ------------------------ |
-| Comment           | `//`, `/* */`          | `(* *)`                | `--`, `{- -}`            |
-| Not equal         | `!=`                   | `<>`                   | `/=`                     |
-| Negative number   | `-5`                   | `~5`                   | `-5`, as arg `(-5)`      |
-| Int division      | `7 / 2`                | `7 div 2`              | ``div 7 2`` / ``7 `div` 2`` |
-| Float division    | `7.0 / 2`              | `7.0 / 2.0`            | `7 / 2`                  |
-| Modulo            | `%`                    | `mod`                  | `mod`                    |
-| And / Or / Not    | `&&` `\|\|` `!`        | `andalso` `orelse` `not` | `&&` `\|\|` `not`      |
-| String concat     | `+` (Java)             | `^`                    | `++`                     |
-| Cons (prepend)    | —                      | `1 :: [2,3]`           | `1 : [2,3]`              |
-| Append lists      | —                      | `[1] @ [2]`            | `[1] ++ [2]`             |
-| Conditional       | `c ? a : b`            | `if c then a else b`   | `if c then a else b`     |
-| Lambda            | `x -> x + 1` (Java)    | `fn x => x + 1`        | `\x -> x + 1`            |
-| Define function   | `int f(int x) {...}`   | `fun f x = x + 1`      | `f x = x + 1`            |
-| Call function     | `f(1, 2)`              | `f(1, 2)` (tuple)      | `f 1 2`                  |
+| Concept         | C / Java             | ML                       | Haskell                     |
+| --------------- | -------------------- | ------------------------ | --------------------------- |
+| Comment         | `//`, `/* */`        | `(* *)`                  | `--`, `{- -}`               |
+| Not equal       | `!=`                 | `<>`                     | `/=`                        |
+| Negative number | `-5`                 | `~5`                     | `-5`, as arg `(-5)`         |
+| Int division    | `7 / 2`              | `7 div 2`                | ``div 7 2`` / ``7 `div` 2`` |
+| Float division  | `7.0 / 2`            | `7.0 / 2.0`              | `7 / 2`                     |
+| Modulo          | `%`                  | `mod`                    | `mod`                       |
+| And / Or / Not  | `&&` `\|\|` `!`      | `andalso` `orelse` `not` | `&&` `\|\|` `not`           |
+| String concat   | `+` (Java)           | `^`                      | `++`                        |
+| Cons (prepend)  | —                    | `1 :: [2,3]`             | `1 : [2,3]`                 |
+| Append lists    | —                    | `[1] @ [2]`              | `[1] ++ [2]`                |
+| Conditional     | `c ? a : b`          | `if c then a else b`     | `if c then a else b`        |
+| Lambda          | `x -> x + 1` (Java)  | `fn x => x + 1`          | `\x -> x + 1`               |
+| Define function | `int f(int x) {...}` | `fun f x = x + 1`        | `f x = x + 1`               |
+| Call function   | `f(1, 2)`            | `f(1, 2)` (tuple)        | `f 1 2`                     |
 
 - `else` is always required, and both branches must have the same type.
 
