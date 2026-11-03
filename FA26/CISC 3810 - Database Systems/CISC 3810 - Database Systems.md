@@ -433,8 +433,70 @@
 - Strength is based on how the primary key of a related entity is defined.
 -  Sometimes, the foreign key also is a primary key component in the related entity.
 
-
 |                  | Weak (non-identifying)                                                       | Strong (identifying)                            |
 | ---------------- | ---------------------------------------------------------------------------- | ----------------------------------------------- |
 | Child's PK       | Does not contain the parents' PK, parent's PK appears only as a foreign key. | Contains the parent's PK as part of its own PK. |
 | Crow's Foot Line | Dashed                                                                       | Solid                                           |
+### Entity Strength:
+- **Weak Entity:**
+	- Existence Dependent; cannot exist without the entity with which it has a relationship; a mandatory foreign key; the child cannot exist without the parent.
+	- Has a primary key hat is partially or totally derived from the parent entity in the relationship.
+	- Use:
+		- Deleting parent also deletes existence dependent children.
+	- Example:
+		- A company insurance policy insures an employee and any dependents.
+		  
+		  An EMPLOYEE might or might not have a DEPENDENT, but the DEPENDENT must be associated with an EMPLOYEE.
+		  
+		  The DEPENDENT cannot exist without the EMPLOYEE; that is, a person cannot get insurance coverage as a dependent unless the person is a dependent of an employee.
+		  
+		  DEPENDENT is the weak entity in the relationship "EMPLOYEE has DEPENDENT."
+
+### Relationship Participation
+- **Optional Participation**
+	- One entity occurrence does not require a corresponding entity occurrence in a relationship.
+	- Example: 
+		- "COURSE generates CLASS" relationship:
+		  
+		  Some COURSEs do not generate a CLASS. In other words, an entity occurrence in the COURSE table does not necessarily require the existence of a corresponding entity occurrence in the CLASS table.
+		  
+		  Therefore, class is considered to be optional to COURSE entity.
+	- In Crow's foot notation, this is denoted:
+		- `-o<` for zero or many		  ![[Pasted image 20261103094606.png]]
+		- `-o|-` for zero or one
+- **Mandatory Participation**
+	-  One entity occurrence requires a corresponding entity occurrence in a particular relationship.
+	- Existence of a mandatory relationship indicates the minimum cardinality is at least 1 for the mandatory entity.
+- **Further Illustrations:**
+	- Suppose that Brooklyn College employs some professors who conduct research without teaching classes.
+	  
+	  If you examine the "PROFESSOR teaches CLASS" relationship, its possible for PROFESSOR to not teach a CLASS.
+	  
+	  Therefore, CLASS is optional to PROFESSOR. On the other hand, a CLASS taught by a PROFESSOR. Therefore, PROFESSOR is mandatory to CLASS.
+
+### Relationship Degrees:
+
+| Relationship | Details                                                                                    |
+| ------------ | ------------------------------------------------------------------------------------------ |
+| Unary        | Association is maintained within a single entity; all unary relationships are recursive(?) |
+| Binary       | Two entities are associated                                                                |
+| Ternary      | Three entities are associated                                                              |
+| Recursive    | Relationship exists within a single entity type.                                           |
+- Important!!! think of relationship between something like CUSTOMERS and CARS.
+	- Many customers may own many cars
+	- A single customer may own many cars 
+	- A car can be owned by only one customer.
+
+### Associative (Composite) Entities:
+- Represents M:N relationships between two or more entities.
+- Has 1:M relationship with the parent entities
+	- Composed of the primary key attributes of each parent entity.
+- May also contain additional attributes that play no role in connective process.
+- Example: ![[Pasted image 20261103102908.png]]
+	- M:N relationship between STUDENT and CLASS is decomposed into two 1:M relationships through ENROLL, the optionalities must be transferred to ENROLL.
+	  
+	  This makes it possible for a CLASS to not occur in ENROLL if no STUDENT has signed up for that class.
+	  
+	  This is because classes are not a _mandatory participants_ of ENROLL. The ENROLL entity becomes optional to CLASS.
+	  
+	  Also, because the ENROLL entity is created before any STUDENTs have signed up for a class, the ENROLL entity is also optional to STUDENT, at least initially.

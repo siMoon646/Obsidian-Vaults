@@ -378,3 +378,28 @@ public class ScoreManager : MonoBehavior {
 }
 
 ```
+
+# Meeting 11: Godot
+**Unity -> Godot Translation**:
+
+| Unity                 | Godot                             |
+| --------------------- | --------------------------------- |
+| GameObjects           | Nodes                             |
+| Hierarchy             | Scene Tree                        |
+| Scenes and Prefabs    | Scenes (includes reusable scenes) |
+| C#                    | GDScript or C#                    |
+| Input System          | Input Map and Input Actions       |
+| Colliders and Physics | Collision Nodes and Physics       |
+| Events                | Signals                           |
+| Canvas and UI         | Control Nodes                     |
+| Scene Manager         | SceneTree methods                 |
+## Nodes and Scenes:
+- Godot uses these to organize a game.
+- **Node**
+	- Individual building block that provides a specific function of behavior. Different node types are designed for different purposes.
+- **Scene**
+
+## What is GDScript:
+- Syntactically similar to python.
+- A lot of type-annotation -> types follow the identifier.
+- 
