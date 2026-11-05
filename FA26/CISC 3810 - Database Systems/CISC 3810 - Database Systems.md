@@ -500,3 +500,19 @@
 	  This is because classes are not a _mandatory participants_ of ENROLL. The ENROLL entity becomes optional to CLASS.
 	  
 	  Also, because the ENROLL entity is created before any STUDENTs have signed up for a class, the ENROLL entity is also optional to STUDENT, at least initially.
+
+### Developing an ER Diagram:
+- Create a detailed narrative of org's operations.
+- Identify business rules.
+- Identify main entities and relationships from business rules.
+- Develop initial ERD
+- identify the attributes and primary keys that adequately describe entities.
+- Revise and review ERD.
+
+- **Note:**
+	- Relationships can be:
+		- Strong + Mandatory
+		- Weak + Mandatory
+		- Strong + Optional
+		- Weak + Optional
+

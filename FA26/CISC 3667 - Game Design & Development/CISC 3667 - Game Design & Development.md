@@ -402,4 +402,231 @@ public class ScoreManager : MonoBehavior {
 ## What is GDScript:
 - Syntactically similar to python.
 - A lot of type-annotation -> types follow the identifier.
-- 
+
+# Meeting 12: GoDot Lab:
+- UI is practically the same as Unity
+- **Assets folder**:
+	- Spritesheet for player object movement 
+	- standalone sprite (coin)
+	- background asset
+	- title page img
+- **Script Folder:**
+	- game logic
+- **Godot Objects:**
+	- AnimatedSprite2D 
+		- how to animate a sprite
+		- can be nested in player object to represent player animations
+	- CollisionShape2D
+		- how to detect object collisions
+	- Player 
+		- represents the player.
+
+`PlayerMovement.gd
+``` gd
+extends CharacterBody2D #root node of Player
+
+#modify in inspector: this is the same as [SerializeField]
+@export var speed: float = 250.0
+
+#same as awake() function
+#`$` grabs child node with matching name of attached game node.
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+func _physics_process(delta: float) -> void:
+	var direction := Input.getVector("ui_left", "ui_right", "ui_up", "ui_down", "idle")
+	
+#ser movement speed
+velocity = direction * speed
+move_and_slide()
+
+#play animation on directional movement
+if direction == Vector2.ZERO:
+	animated_sprite.player("idle")
+elif abs(direction.x) > abs(direction.y):
+	if direction.x > 0:
+		animated_sprite.play("walk_right")
+	else:
+		aniamted_sprite.play("walk_left")
+elif direction.y > 0:
+	animated_sprite.play("walk_up")
+else:
+	animated_sprite.play("walk_down")
+```
+
+`Coin.gd`
+```
+extends Area2D
+
+var collected: bool = fals 
+
+func _ready() -> void:
+	$LifetimeTimer.start()
+	
+func _on_body_entered(body: Node2D) -> void:
+	if collected:
+		return
+	
+	if body.is_in_group("player"):
+		collected = true
+		GameManager.collection_coin()
+		queue.free()
+		
+func _on_lifetime_timer_timeout() -> void:
+	if not collected:
+		queue.free()
+```
+
+`GameManager.gd`
+``` gd
+extends Node
+
+signal score_changed(new_score: int)
+signal round_completed
+
+var score: int = 0
+var final_score: int = 0
+var high_score: int = 0
+
+var round_finished: bool = false
+
+const SAVE_PATH = "user:://save_data.json"
+
+func _ready() -> void:
+	load_high_score()
+	
+func start_round() -> void:
+	score = 0
+	final_score = 0
+	round_finished = false
+	
+	score_changed.emit(score)
+
+func collect_coin() -> void:
+	#prevent score from increasing if program has ended
+	if round_finished:
+		return
+	
+	score += 1
+	score_changed.emit(score)
+	
+func finish_round() -> void:
+	if round_finihsed:
+		return
+	
+	round_finished = true
+	final_score = score
+	
+	if final_score > high_score:
+		high_score = final_score
+		save_high_score()
+	
+	round_completed.emit()
+	
+func save_high_score() -> void:
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	
+	if not file:
+		push_error("Could not open the save file.")
+		return
+	
+	var data = {"high_score": high_score}
+	file.store.string("JSON.stringify(data))
+
+func load_high_score() -> void:
+	high_score = 0
+	
+	if not FileAccess.file_exists(SAVE_PATH):
+		return
+		
+	var vile = FileAccess.open(SAVE_PATH, FileAccess.READ)
+	
+	if not file: 
+		return
+		
+	var data = JSON.parse_string(file.get_as_text())
+	
+	if data is Dictionary:
+		var saved_score = data.get("high_score", 0)
+		
+		if saved_score is int and saved_score >= 0:
+			high_score = saved_score
+```
+
+Make GameManager.go the first script to start for the game.
+
+`Game.gd`
+```
+extends Node2D
+
+#preload coin scene so new intances can be created during gameplay.
+const COIN_SCENE = preloada("res://scenes/Coin.tscn")
+
+@onready var score_label: Label = $ScoreLabel
+@onready var time_label: Label = $TimeLabel
+@onready var spawn_points: Node2D = $SpawnPoints
+@onready var spawn_time: Timer = $SpawnTimer
+@onready var round_timer: Timer = $RoundTimer
+
+func _ready -> void:
+	GameManager.score_changed.connect(_on_score_changed)
+	GameManager.round_completed.connect(_on_round_completed)
+	
+	GameManager.start_round()
+	
+	#update score and timer displays
+	_on_score_changed(GameManager.score)
+	_update_time_label()
+	
+func _process(delta: float) -> void:
+	_update_time_label()
+	
+func _update_time_lavel() -> void:
+	time_label.text = "Time: " + str(ceili(round_timer.time_left))
+	
+	_spawn_coin()
+	spawn_timer.start()
+	round_timer.start()
+	
+func _spawn_coin() -> void:
+	if GameManager.round_finished:
+		return
+		
+	var points = spawn_points.get_children()
+	
+	if points.is_empty():
+		push_warning("add Marker2D nodes under SpawnPoints.)
+	
+	var coin = COIN_SCENE.instantiate()
+	add_child(coin)
+	
+	var chosen_point = points.pick_random()
+	
+	coin.global_position = chosen_point.global_position
+
+# a coin has despawned, this is the time it takes until the next one spawns
+func _on_spawn_timer_timeout() -> void:
+	_spawn_coin()
+	
+func _on_round_timer_timeout() -> void:
+	GameManager.finish_round()
+	
+func _on_score_changed(new_score: int) -> void
+	score_label.text = "Score: " + str(new_score)
+	
+func _on_round_completed() -> void:
+	spawn_timer.stop()
+	round_timer.stop()
+	
+	get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")	
+```
+
+`MainMenu.gd`
+```
+extends Control
+
+func _on_start_button_pressed() -> void:
+	get_tree().change-scene_to_file("res://Scenes/Game.tscn")
+	
+func _on_instructions_button_pressed() -> void:
+	get_tree(),change_scene_to_file()
+```
