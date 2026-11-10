@@ -441,7 +441,6 @@ a ; error
 | Call function   | `f(1, 2)`            | `f(1, 2)` (tuple)        | `f 1 2`                     |
 
 - `else` is always required, and both branches must have the same type.
-
 ## ML
 ### Types
 - `int`, `real` (double), `bool`, `char` (`#"a"`), `string`, `unit` (≈ `void`, value `()`)
@@ -471,14 +470,27 @@ let val a = 1 val b = 2 in a + b end;   (* local vars: 3 *)
 ### Types
 - `Bool`, `Char`, `String` (= `[Char]`), `Float`, `Double`
 - `Int`: bounded like C's `long` (usually 64-bit); `Integer`: unbounded (BigInteger)
+### Type Classes
+| Java    | Interface<br>(Comparable) | Class<br>(Integer) |
+| ------- | ------------------------- | ------------------ |
+| Haskell | Type Class<br>(Ord)       | type<br>(Integer)  |
 
+| Class        | Provides                        | Example instances    |
+| ------------ | ------------------------------- | -------------------- |
+| `Eq`         | `==`, `/=`                      | most types           |
+| `Ord`        | `<`, `>`, `compare`, `max`      | `Int`, `Char`        |
+| `Show`       | `show` (≈ `toString()`)         | most non-functions   |
+| `Num`        | `+`, `-`, `*`, `abs`            | `Int`, `Double`      |
+| `Integral`   | `div`, `mod`                    | `Int`, `Integer`     |
+| `Fractional` | `/`                             | `Float`, `Double`    |
+
+**Hierarchy** (subclass requires superclass, like `interface Ord extends Eq`; full diagram on Brightspace).
 ### Syntax Notes
 - Function call is just a space: `f x y`. It binds tighter than any operator: `square 3 + 1` = `10`.
 - `f $ g x` = `f (g x)` (saves parentheses).
 - Operator as a function: `(+) 1 2`; function as an operator: ``7 `div` 2``.
 - Lists: `head`, `tail`, `null`, `!!` (index: `[10,20] !! 1` → `20`)
 - Laziness allows infinite lists: `take 3 [1..]` → `[1, 2, 3]`
-
 ### Bindings & Functions
 ```haskell
 x = 1 + 2
@@ -512,64 +524,101 @@ add3 = add 3             -- add3 10 = 13
 map (add 1) [1, 2, 3]    -- [2, 3, 4]
 map (*2) [1, 2, 3]       -- [2, 4, 6]  "section": partially applied operator
 ```
-- ML functions taking a tuple (`fun add(x, y)`) are **not** curried; `fun add x y` is.
 
-### Function Composition
+### Functions:
+```haskell
+main = do
+	print "Hello, world!"
+	print (square 4)
+	print (:t square)    -- Num a => a -> a
+	print (:t fact)      -- (Eq t, Num t) => t -> t
+
+square x = x * x
+
+-- recursive function:
+fact n = if n == 0 then 1 else n * fact (n-1)
+
+	-- pattern matching style
+fact 0 = 1              -- base case
+fact n = n * fact (n-1) -- recursive case
+```
+- In the main function,
+	- The type of the square function is: "a function that takes an `a` and returns an `a`, where `a` is a `Num`"
+	- The type of the fact function is: "a function that takes a `t` and returns a `t`, where `t` is a datatype from `Eq` and `Num`"
+- Parenthesis on `n-1` necessary, because functions have higher precedence than operators.
+#### Function Composition
 - `(f . g) x` = `f (g x)`: apply `g`, then `f`.
 ```haskell
 (square . (+1)) 2        -- 9
 ```
-
-### Type Classes
-| Java    | Interface<br>(Comparable) | Class<br>(Integer) |
-| ------- | ------------------------- | ------------------ |
-| Haskell | Type Class<br>(Ord)       | type<br>(Integer)  |
-
-| Class        | Provides                        | Example instances    |
-| ------------ | ------------------------------- | -------------------- |
-| `Eq`         | `==`, `/=`                      | most types           |
-| `Ord`        | `<`, `>`, `compare`, `max`      | `Int`, `Char`        |
-| `Show`       | `show` (≈ `toString()`)         | most non-functions   |
-| `Num`        | `+`, `-`, `*`, `abs`            | `Int`, `Double`      |
-| `Integral`   | `div`, `mod`                    | `Int`, `Integer`     |
-| `Fractional` | `/`                             | `Float`, `Double`    |
-
-**Hierarchy** (subclass requires superclass, like `interface Ord extends Eq`; full diagram on Brightspace):
-- `Eq` → `Ord`
-- `Num` → `Real` (+ `Ord`) → `Integral`
-- `Num` → `Fractional` → `Floating`
-- `Real` + `Fractional` → `RealFrac`
-
-## Type Safety:
-- **Type Unsafe Lang:**
-	- Language allowed to violate type constraints, but have undefined behavior..
-## Statically Typed:
-- A language is statically typed if type checking is performed before the program runs. Each var and expr has a type determined before execution
-- Pretty much all compiled languages.
-- Independent of dynamic typing
-
-## Dynamically Typed:
-- A language is dynamically typed if type checking is performed at runtime. Each value has a type, but variables are not restricted to a single type.
-- Pretty much all interpretive languages.
-- Independent of static typing
-
-Java Example (Statically Typed):
-``` java
-int x = 10;
-x = "hello" // compilation error
+### Lambdas:
+```haskell
+f = \x y -> x + y
+:t f -- Num a => a -> a -> a
+(\x -> x + 1) 10 -- 11
 ```
-Python Example (Dynamically Typed):
-``` python
-x = 10
-x = 1.7 #legal
-# Note: This is not an example of type unsafety: unlike in C
-# Python does nto reinterpret the memory as a float; instead,
-# x refers to a new float value
-x = "hello" #legal
-x +=1 #TypeError at runtime: can't operate math on string
+- Lambdas require at least one parameter.
+
+### Lists, Recursion, Higher Order Functions, Laziness, Pattern Matching
+- **Some functions on lists built into Haskell**
+```haskell
+main = do
+	print [1,2,3]
+	print [3..7]    -- [3,4,5,6,7]
+	print [3,5..13] -- [3,5,7,9,11,13] ; disclosing a pattern
+	let lst = [5,7,8,10,9,12] -- local identifier
+	print (head lst)     -- 5 (like car)
+	print (tail lst)     -- [7,8,10,9,12] (like cdr)
+	print (take 3 lst)   -- [5,7,8]
+	print (drop 2 lst)   -- [8,10,9,12]
+	print (length lst)   -- 6
+	print (reverse lst)  -- [12,9,10,8,7,5] -> just a view of lst, non-modifying
+	-- something like HOF
+	print (map succ lst) -- [6,8,9,11,10,13]
+	print (map (\x -> 2 * x) lst) -- [10,14,16,20,18,24]	
+	let postives = [1..]             -- infinite list
+	-- Haskell uses lazy evaliation ; elements are obtained as needed.
+	print (take 3(drop 4 positives)) -- [5,6,7]
+	let ones = [1,1..]         -- infinite list of ones
+	print (take 5 ones)        -- [1,1,1,1,1]
+	let positiveOdds = [1,3..] -- infinite list of only odd nums
+	print (take 4 postiveOdds) -- [1,3,5,7]
+```
+#### Writing Functions On Lists:
+```haskell
+len lst = if lst == [] then 0 else 1 + (len (tail lst))
+-- with pattern matching: 
+len [] = 0
+len lst = 1 + (len (tail lst))
+
+-- with 'better' pattern matching: 
+len [] = 0
+len (x:xs) = 1 + len xs -- x is the head, xs is the tail (possibly empty list)
+
+len [] = 0
+len (_:xs) = 1 + len xs -- x in the previous iteration isn't used.
+```
+#### Class Parodies Of Functions:
+``` haskell
+mymap :: (a -> b) -> [a] -> [b]
+-- that is: mymap takes two inputs a functoin from a to b, and a list of a, and returns a list of b
+
+mymap _ [] = []                     -- uses `_` to indicate function doesn't matter for empty list
+mymap f (x:xs) = (f x):(mymap f xs) -- using cons operator `:`
+
+sorted :: Ord a => [a] -> Bool -- a must be an Ord class datatype so that it's comparable.
+sorted [] = True  -- empty list always sorted
+sorted [_] = True -- list of one elt always sorted
+sorted (x:y:xs) = x <= y && sorted (y:xs) -- a list of at-least 2 elts
 ```
 
-## Explicit Typing:
-- The programmer specifies types
-## Implicit Typing:
-- The compiler determines the types. If a compiled language supports implicit typing, the compiler uses type inference to determine the types when needed. 
+
+## Type Systems
+
+| Static Type System  | Types are checkd and almost all type errors are detected before run-time         |
+| ------------------- | -------------------------------------------------------------------------------- |
+| Dynamic Type System | Types are checked and most type errors are detected at run-time.                 |
+| Safe Type System    | Does not permit the integrity constraints of types to be deliberately violated.  |
+| Unsafe Type System  | Permits the integrity constraints of types of types to be deliberately violated. |
+| Explicit Typing     | Requires the type of each variable to be explicitly declared.                    |
+| Implicit Typing     | Does not require the type of each variable to be explicitly declared.            |

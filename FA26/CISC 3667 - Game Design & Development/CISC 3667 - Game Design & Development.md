@@ -555,7 +555,7 @@ func load_high_score() -> void:
 Make GameManager.go the first script to start for the game.
 
 `Game.gd`
-```
+``` 
 extends Node2D
 
 #preload coin scene so new intances can be created during gameplay.
