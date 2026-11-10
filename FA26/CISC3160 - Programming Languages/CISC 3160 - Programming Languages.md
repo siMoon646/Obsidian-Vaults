@@ -539,3 +539,37 @@ map (*2) [1, 2, 3]       -- [2, 4, 6]  "section": partially applied operator
 - `Num` → `Real` (+ `Ord`) → `Integral`
 - `Num` → `Fractional` → `Floating`
 - `Real` + `Fractional` → `RealFrac`
+
+## Type Safety:
+- **Type Unsafe Lang:**
+	- Language allowed to violate type constraints, but have undefined behavior..
+## Statically Typed:
+- A language is statically typed if type checking is performed before the program runs. Each var and expr has a type determined before execution
+- Pretty much all compiled languages.
+- Independent of dynamic typing
+
+## Dynamically Typed:
+- A language is dynamically typed if type checking is performed at runtime. Each value has a type, but variables are not restricted to a single type.
+- Pretty much all interpretive languages.
+- Independent of static typing
+
+Java Example (Statically Typed):
+``` java
+int x = 10;
+x = "hello" // compilation error
+```
+Python Example (Dynamically Typed):
+``` python
+x = 10
+x = 1.7 #legal
+# Note: This is not an example of type unsafety: unlike in C
+# Python does nto reinterpret the memory as a float; instead,
+# x refers to a new float value
+x = "hello" #legal
+x +=1 #TypeError at runtime: can't operate math on string
+```
+
+## Explicit Typing:
+- The programmer specifies types
+## Implicit Typing:
+- The compiler determines the types. If a compiled language supports implicit typing, the compiler uses type inference to determine the types when needed. 
