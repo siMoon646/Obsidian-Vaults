@@ -4,6 +4,8 @@
 - A Skyrim Special Edition mod.
 ## Where to Access:
 - Probably GitHub and some mod-site mirrors like Nexus Mods.
+- Temporarily, for the purpose of this project, Parsec.
+	- 
 ## Abstract: 
 - When the player reaches level 30 in Archery, the courier NPC will seek out the player to hand them a note that invites them to the "Cyrodil's Greatest Archer Contest". The player doesn't have to immediately attend, they may delay their attendance however long they want.
 ## Sequence of Events:

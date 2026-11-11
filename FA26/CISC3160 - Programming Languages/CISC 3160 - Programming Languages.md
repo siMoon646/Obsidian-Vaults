@@ -611,8 +611,6 @@ sorted [] = True  -- empty list always sorted
 sorted [_] = True -- list of one elt always sorted
 sorted (x:y:xs) = x <= y && sorted (y:xs) -- a list of at-least 2 elts
 ```
-
-
 ## Type Systems
 
 | Static Type System  | Types are checkd and almost all type errors are detected before run-time         |
@@ -622,3 +620,103 @@ sorted (x:y:xs) = x <= y && sorted (y:xs) -- a list of at-least 2 elts
 | Unsafe Type System  | Permits the integrity constraints of types of types to be deliberately violated. |
 | Explicit Typing     | Requires the type of each variable to be explicitly declared.                    |
 | Implicit Typing     | Does not require the type of each variable to be explicitly declared.            |
+### Parametric Polymorphism:
+- The ability to write code that works the same way for any type by using a type param in place of a specific type.
+
+#### Example:
+``` haskell
+main = do
+print (identity 10)
+print (identity "hello")
+
+identity x = x
+-- x is a type parameter.
+```
+Scheme-style list in Java (Functional):
+``` java
+void main(){
+	// scame as (cons 1 (cons 2 (cons 3 '())))
+	IntList list = from(1, from(2, from(3, emptyLits())));
+}
+
+sealed interface IntList permits EmptyIntList, NonemptyIntList {}
+record EmptyIntList() implements IntList {}
+record NonemptyIntList(int first, IntList rest) implements IntList {}
+
+// lile '()
+IntList emptyList = new EmptyIntList();
+
+// like cons
+IntList from(int first, IntList rest){
+	return new NonemptyIntList(first, rest);
+}
+
+// like  car
+int first(IntList list){
+	return switch(list){
+		case EmptyIntList _ -> throw new RuntimeException();
+		case NoneemptyIntList neil -> neil.first();
+	}
+	
+	// pattern matching with record deconstruction:
+	return swith (list){
+		case EmptyIntList _ -> throw new RuntimeException();
+		case NonemptyIntList (first, _) -> first;
+	}
+} 
+
+// like cdr
+IntList rest(IntList list){
+	return switch(list){
+		case EmtpyIntList _ -> throw new RuntimeException();
+		case NonemptyList (_, IntList rest) -> rest;
+	}	
+}
+```
+Scheme-style list in Java (OO):
+``` java
+void main() {
+	IntList list = IntList.from(1, IntList.from(2, IntList.from (3, IntList.empty())))
+}
+
+sealed interface Intlist permits EmptyIntList, NonemptyIntList {
+	int first();
+	IntList rest();
+	int sum();
+
+	static IntList empty(){
+		return EmptyIntList.INSTANCE;
+	}
+
+	static IntList from(int first, IntList rest){
+		return new NonemptyIntList(first, rest);
+	}
+}
+
+record EmptyIntList() implements IntList{
+	static EmptyIntList INSTANCE = new EmptyIntList()
+
+	@Override
+	public int first(){
+		throw new RuntimeException();
+	}
+	
+	@Override 
+	public int rest(){
+		throw new RuntimeException();
+	}
+	
+	@override
+	public int sum(){
+		return 0;
+	}
+}
+
+record NonemptyIntList(int first, IntList rest) implements IntList{
+	// don't have to write methods first() and rest(), because record class automatically fills those in with some defaults.
+	@Override
+	public int sum(){
+		return first + rest.sum();
+	}
+}
+```

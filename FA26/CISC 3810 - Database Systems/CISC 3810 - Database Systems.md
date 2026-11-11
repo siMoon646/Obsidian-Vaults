@@ -500,7 +500,6 @@
 	  This is because classes are not a _mandatory participants_ of ENROLL. The ENROLL entity becomes optional to CLASS.
 	  
 	  Also, because the ENROLL entity is created before any STUDENTs have signed up for a class, the ENROLL entity is also optional to STUDENT, at least initially.
-
 ### Developing an ER Diagram:
 - Create a detailed narrative of org's operations.
 - Identify business rules.
@@ -515,4 +514,9 @@
 		- Weak + Mandatory
 		- Strong + Optional
 		- Weak + Optional
-
+	- Entities can have more than just one relationship between them.
+		- Note that the strength of all relationships between the same pair of entities is the same(?).
+	- Denoting cardinality of relationships.
+		- "A professor may teach UP TO 4 classes"
+			- The "professor" side of the relationship should have subscript with `(0,4)` beneath it to denote cardinality.
+			- 
