@@ -11,6 +11,5 @@
 # What is the difference between the current score and the persistent high score?
 > The current score is a record of the score as it exists in an instant. The persistent high score is the historical greatest value that the player has achieved as a score as is saved in a file for future reference.
 
-Which part of working in Godot was most different from
-working in Unity?
+# Which part of working in Godot was most different from working in Unity?
 > The concept of using signals was the most unique, I like that different signals mapped to different functions within the same script. I found it a pleasant abstraction that didn't take away too many implementation details; perfect for a game engine.
