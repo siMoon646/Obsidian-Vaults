@@ -401,8 +401,7 @@ public class ScoreManager : MonoBehavior {
 
 ## What is GDScript:
 - Syntactically similar to python.
-- A lot of type-annotation -> types follow the identifier.
-
+- A lot of type-annotation -> types follow the identifier. 
 # Meeting 12: GoDot Lab:
 - UI is practically the same as Unity
 - **Assets folder**:
@@ -630,3 +629,13 @@ func _on_start_button_pressed() -> void:
 func _on_instructions_button_pressed() -> void:
 	get_tree(),change_scene_to_file()
 ```
+
+# Meeting 14:
+## Game Design Document:
+- Game Overview
+- Gameplay Mechanics
+- Story and Narrative 
+- Level Design
+- Art and Visual Design and Style
+- Audio Design
+- Technical Specifications

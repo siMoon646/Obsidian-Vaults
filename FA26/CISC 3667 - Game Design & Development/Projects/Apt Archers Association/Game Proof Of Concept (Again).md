@@ -1,16 +1,26 @@
 # Title: 
 - **Apt Archers Association**
-## What is it?
+## Overview
 - A Skyrim Special Edition mod.
+- The player earns recognition for their archery skills in Skyrim and is invited to a minigame where they can earn rewards.
+## Story and Narrative:
+- Draft:
+	- This mod is a prequel to a later mod where the faction "The Dark Brotherhood" is searching for a particularly skilled archer to recruit...
+## Level Design:
+- The locations introduced in my mod will be in the theme of "The Dark Brotherhood" faction to be consistent with the drafted story/narrative.
+## Art and Visual Design and Style:
+- All visual assets are going to either be from the Skyrim: Special Edition base game or be created to be consistent with the existing style of the Skyrim: Special Edition base game.
+## Audio Design:
+- All music and sfx --> from the original Skyrim: Special Edition base game.
+- Additional voice-lines --> AI generated via Qwen3-TTS, using my voice with remixing. (Still experimenting
 ## Where to Access:
 - Probably GitHub and some mod-site mirrors like Nexus Mods.
 - Temporarily, for the purpose of this project, Parsec.
-	- 
 ## Abstract: 
 - When the player reaches level 30 in Archery, the courier NPC will seek out the player to hand them a note that invites them to the "Cyrodil's Greatest Archer Contest". The player doesn't have to immediately attend, they may delay their attendance however long they want.
 ## Sequence of Events:
 - Player reaches level 30
-- Courier NPC reaches out to player to invite them to Archery event
+- Courier NPC reaches out to player to hand them the invite to Archery event
 - The player reads "**An Arrow's Invitation**" letter item:
 	- Dear \<playername>,
 	  
@@ -46,6 +56,11 @@
 	- The quest fails. No reward.
 
 ## Likely Tooling of Mod:
+## Runtime Expectations: 
+- Windows operating system
+- Access to Skyrim: Special Edition
+- Modding software (Either Vortex launcher or Mod Organizer 2)
+## Tech Stack:
 - Papyrus:
 	- Scripting language for Skyrim.
 - Skyrim Creation Kit:

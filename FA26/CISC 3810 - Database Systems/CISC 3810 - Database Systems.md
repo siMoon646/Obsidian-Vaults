@@ -444,7 +444,6 @@
  
 ---
 # Chapter 4: Entity Relationship (ER) Modeling
- 
 ## Components of the ER Model
 - The **ERM** forms the basis of an **ERD**, which represents the **conceptual database as viewed by the end user**.
 1. **Entities**
