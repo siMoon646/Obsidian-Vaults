@@ -637,5 +637,29 @@ func _on_instructions_button_pressed() -> void:
 - Story and Narrative 
 - Level Design
 - Art and Visual Design and Style
-- Audio Design
+- Design
 - Technical Specifications
+
+# Meeting 15:
+## Types of Game Objects
+- Diegetic: elements that are perceptible to subjects within a narratative
+- Non-Diegetic: elements that are imperceptible to subjects within a narrative
+- Meta: UI elements that are contextual to the game but have no roll in the narrative
+- Spatial: Things represented in the game space, but imperceptible to the characters
+## Eight Golden Rules Of UX Design:
+- Consistency
+- Enable frequent users to use shortcuts
+- Offer informative feedback
+- Design dialogs to yield closure
+- Error prevention and simple error handling
+- Permit easy reversal of actions
+- Users have control
+- Reduce short-term memory load
+## Four Layers of UX:
+- Most to least important: 
+	- Functionality
+	- Usability
+	- Aeshetics
+	- Fun
+
+
