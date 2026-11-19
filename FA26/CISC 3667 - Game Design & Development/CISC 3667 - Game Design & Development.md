@@ -661,5 +661,12 @@ func _on_instructions_button_pressed() -> void:
 	- Usability
 	- Aeshetics
 	- Fun
-
-
+# Meeting 16:
+- Accessibility:
+	- Practice of making video games playable and enjoyable for as many people as possible, including those with disabilities or impairments. 
+	- Design games to be easily navigated, understood, and interacted with by players with a wide range of abilities and needs.
+	- Possible Accessibility Features:
+		- Customizable controls
+		- Visual accessibility (color blind settings)
+		- Audio accessibility (subtitles)
+		- 
