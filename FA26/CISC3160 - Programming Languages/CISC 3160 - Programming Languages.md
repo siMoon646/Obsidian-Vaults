@@ -720,3 +720,64 @@ record NonemptyIntList(int first, IntList rest) implements IntList{
 	}
 }
 ```
+# Chapter 8:
+In java, lambda expressions must be an instance of a functional interface.
+
+Conventions for naming lambda functions:
+- Predicate: test
+- Consumers: accept
+
+## Partial Function Application:
+- Reducing the params of a function (Like some params are prefilled 🥀)
+- Example:
+```
+; Tkaes a function f of n parameters as well as an arguments a1, ..., am for the first m parameters, and returns a function g of n - m parameters such that g(a_m+1, ..., an) = f(a1, ..., am, a_m+1, ..., an).
+(define papply
+	(lambda (f . first-args) (
+		lambda rest-of-args
+			(apply f (append first-args rest-of-args))))
+			
+(define mult4 (lamda (a b c d) (* a b c d)))
+(define foo (pappply mult4 1 2))
+(foo 3 4) ; 24
+```
+
+## Currying:
+```haskell
+addNoncurried :: (Int, Int) -> Int
+addNoncurried (x, y) = x + y
+
+-- We can think of this as a function of two int parameters that returns an Int.
+-- But really, it is a function of a single Int parameter that returns a function that itself has a single Int parameter and which returns an Int.
+addCurried :: Int -> Int -> Int
+addCurried x y = x + y
+```
+### Uncurrying:
+- (A -> (B -> C)) -> ((A, B) -> C)
+```scheme
+; takes a function f of a single parameter that returns a function g of a single parameter, and returns a function h of two parameter such that h(x, y) = f(x) (y)
+(define uncurry
+	(lambda (f)
+		(lambda (x y))))	
+```
+
+## Fold L & R
+```scheme
+; reduce from left to right
+(define fold-left
+	(lambda (lst init f)
+		(if (null? lst)
+			init
+			(fold-left (cdr lst) (f init (car lst)) f))))
+			
+; reduce from right to left
+(define fold-right
+	(lambda (lst init f)
+		(if (null? lst)
+			init
+			(f (car lst) (fold-right (cdr lst) init f))))
+(define sub (lambd (x y) (- x y)))
+(fold-left '(1 2 3) 0 sub); (((0 - 1) - 2) - 3)
+
+(fold-right '(1 2 3) 0 sub); ((()))
+```
