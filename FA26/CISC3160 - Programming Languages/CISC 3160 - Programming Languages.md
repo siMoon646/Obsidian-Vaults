@@ -730,8 +730,8 @@ Conventions for naming lambda functions:
 ## Partial Function Application:
 - Reducing the params of a function (Like some params are prefilled 🥀)
 - Example:
-```
-; Tkaes a function f of n parameters as well as an arguments a1, ..., am for the first m parameters, and returns a function g of n - m parameters such that g(a_m+1, ..., an) = f(a1, ..., am, a_m+1, ..., an).
+``` java
+; Takes a function f of n parameters as well as an arguments a1, ..., am for the first m parameters, and returns a function g of n - m parameters such that g(a_m+1, ..., an) = f(a1, ..., am, a_m+1, ..., an).
 (define papply
 	(lambda (f . first-args) (
 		lambda rest-of-args
@@ -781,3 +781,16 @@ addCurried x y = x + y
 
 (fold-right '(1 2 3) 0 sub); ((()))
 ```
+
+| Interface | Takes | Returns | Method |
+|---|---|---|---|
+| `Function<T, R>` | T | R | `apply` |
+| `BiFunction<T, U, R>` | T, U | R | `apply` |
+| `Consumer<T>` | T | nothing | `accept` |
+| `BiConsumer<T, U>` | T, U | nothing | `accept` |
+| `Supplier<T>` | nothing | T | `get` |
+| `Predicate<T>` | T | boolean | `test` |
+| `BiPredicate<T, U>` | T, U | boolean | `test` |
+| `UnaryOperator<T>` | T | T | `apply` |
+| `BinaryOperator<T>` | T, T | T | `apply` |
+| `Runnable` | nothing | nothing | `run` |
